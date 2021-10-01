@@ -1,0 +1,112 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 2, 2021, 10:57:45 AM
+    Author     : Buu Duong Tan
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+
+/*__________________________________________________bodyHome__________________________________________________*/
+.bodyHome
+{
+    height: 70vh;
+    margin-top: 20vh;
+    text-align: center
+}
+.brand
+{
+    font-size: 48px;
+    text-shadow: 8px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.brand h1
+{
+    font-size: 256px;
+    letter-spacing: 4vw;
+    text-shadow: 32px 16px 8px rgba(0, 0, 0, 0.3);
+}
+.slogan
+{
+    position: absolute;
+    bottom: 1vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.4);
+}
+.welcome
+{
+    padding-top: 10vh;
+    font-size: 128px;
+    letter-spacing: 4vw;
+    text-shadow: 16px 16px 8px rgba(0, 0, 0, 0.3);
+}
+
+/*__________________________________________________bodySignIn__________________________________________________*/
+.err-mess-box
+{
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightpink;
+}
+.bodySignIn
+{
+    width: 100vw;
+    margin-top: 20vh;
+}
+.form-sign-in{
+    width: 25vw;
+    text-align: center;
+    background-color: white;
+    box-shadow: 20px 20px 30px 20px rgba(0, 0, 0, 0.25);
+    padding: 2vh 2vw 2vh 2vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.form-sign-in i, input, button, a
+{
+    font-size: 18px;
+    margin: 2vh 0 4vh 0vw;
+}
+.form-sign-in input
+{
+    height: 5vh;
+    max-width: 15vw;
+    border: 2px solid black;
+}
+.btn-sign-in
+{
+    margin-top: 8vh;
+    padding: 1vh 2vw 1vh 2vw;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.btn-sign-in:hover
+{
+    font-weight: bold;
+    border: 2px solid black;
+}
+.sign-up-link
+{
+    font-size: 16px;
+    color: black;
+    text-decoration: underline;
+}
+.sign-up-link:hover
+{
+    color: blue;
+}
+
+/*__________________________________________________bodySignUp__________________________________________________*/
