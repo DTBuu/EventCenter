@@ -21,5 +21,11 @@ public class ControllerHomeManager {
     public String pageHome(Model m) {
           
         return "pageHomeManager";
-    } 
+    }
+    
+    @GetMapping("/Dashboard")
+    public String pageDashboard(Model m) {
+          
+        return "pageDashboard";
+    }
 }

@@ -44,6 +44,7 @@ and open the template in the editor.
 .logo
 {
     position: absolute;
+    left: 1%;
     height: 10vh;
     margin: 1vh 0 0 0.5vw;
 }

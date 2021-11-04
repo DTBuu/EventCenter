@@ -31,4 +31,9 @@ and open the template in the editor.
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyHome-signed.jsp"/>
     </definition>
+    <definition name="pageDashboard" extends="baseLayout">
+        <put-attribute name="title" value="EveCen Dashboard"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyDashboard.jsp"/>
+    </definition>
 </tiles-definitions>

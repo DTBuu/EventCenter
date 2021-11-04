@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item-link" href="#">
+            <a class="nav-item-link" href="<core:url value="/Dashboard"/>">
                 <i class="uil uil-dashboard"></i>
                 Dashboard
             </a>
