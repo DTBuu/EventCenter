@@ -8,7 +8,10 @@ package com.dtbuu.pojos;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,6 +23,8 @@ import javax.persistence.Table;
 public class ChuTri implements Serializable {
     
     @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chutri_generator"  )
+//    @SequenceGenerator(name = "chutri_generator", )
     private int ChuTri_id;
     
     @Column(nullable=false, length=100)

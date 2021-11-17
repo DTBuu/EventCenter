@@ -6,29 +6,19 @@
 package com.dtbuu.controllers;
 
 import com.dtbuu.pojos.KhachHang;
-import com.dtbuu.pojos.ViTri;
 import com.dtbuu.pojos.Logins;
 import com.dtbuu.services.SerKhachHang;
 import com.dtbuu.services.SerLogins;
 import com.dtbuu.services.SerNhanVien;
+import com.dtbuu.services.SerSanhTiec;
 import com.dtbuu.validators.myValidators;
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Query;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import com.dtbuu.services.SerViTri;
-import java.util.Date;
 import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +30,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @ControllerAdvice
 public class ControllerHome {
+    @Autowired
+    private SerSanhTiec serSanhTiec;
     
     private static final Pattern DATE_PATTERN = Pattern.compile(
         "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$"+
@@ -54,6 +46,7 @@ public class ControllerHome {
     @Autowired private SerNhanVien serNhanVien;
     @Autowired private SerLogins userDetailsService;
     @Autowired private SerKhachHang serKhachHang;
+    //@Autowired private SerSanhTiec serSanhTiec;
     
     
     
@@ -119,6 +112,11 @@ public class ControllerHome {
         return "pageSignUp";
     }
     
+    @GetMapping("/pageEvent")
+    public String pageView(Model m) {
+        m.addAttribute("view", this.serSanhTiec.getSanhTiecs(""));
+        return "pageView";
+    }
 
     
 }

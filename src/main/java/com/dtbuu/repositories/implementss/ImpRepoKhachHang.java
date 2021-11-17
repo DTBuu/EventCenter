@@ -65,4 +65,21 @@ public class ImpRepoKhachHang implements RepoKhachHang {
 //        
 //        return query.getResultList();
 //    }  
+
+    @Override
+    public List<KhachHang> getKhachHangs(String keyword) {
+        Session s=sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder=s.getCriteriaBuilder();
+        CriteriaQuery<KhachHang> query =builder.createQuery(KhachHang.class);
+        Root root=query.from(KhachHang.class);
+        query=query.select(root);
+        
+        if (!keyword.isEmpty() && keyword!=null) {
+            Predicate p=builder.like(root.get("ho").as(String.class)
+                    ,String.format("%%%s%%", keyword));
+        }
+        
+        Query q=s.createQuery(query);
+        return q.getResultList();
+    }
 }

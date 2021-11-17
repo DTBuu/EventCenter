@@ -22,8 +22,8 @@ public class GiaiTri implements Serializable {
     @Id
     private int GiaiTri_id;
     
-    @Column(nullable=false, length=100)
-    private String GiaiTri_loai;
+//    @Column(nullable=false, length=100)
+//    private String GiaiTri_loai;
     
     @Column(nullable=false, length=100)
     private String GiaiTri_ten;
@@ -38,8 +38,8 @@ public class GiaiTri implements Serializable {
     public int getGiaiTri_id() {return GiaiTri_id;}
     public void setGiaiTri_id(int GiaiTri_id) {this.GiaiTri_id = GiaiTri_id;}
 
-    public String getGiaiTri_loai() {return GiaiTri_loai;}
-    public void setGiaiTri_loai(String GiaiTri_loai) {this.GiaiTri_loai = GiaiTri_loai;}
+//    public String getGiaiTri_loai() {return GiaiTri_loai;}
+//    public void setGiaiTri_loai(String GiaiTri_loai) {this.GiaiTri_loai = GiaiTri_loai;}
 
     public String getGiaiTri_ten() {return GiaiTri_ten;}
     public void setGiaiTri_ten(String GiaiTri_ten) {this.GiaiTri_ten = GiaiTri_ten;}

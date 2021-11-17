@@ -16,5 +16,5 @@ import java.util.List;
  */
 public interface RepoKhachHang {
     boolean addKhachHang(KhachHang customer);
-//    List<KhachHang> getKhachHang(String key);
+    List<KhachHang> getKhachHangs(String keyword);
 }

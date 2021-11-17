@@ -14,10 +14,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "NhanVien")
 public class NhanVien implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -35,7 +38,9 @@ public class NhanVien implements Serializable {
     @ManyToOne @JoinColumn(name="ViTri_id") // Foreign Key.
     private ViTri ViTri;
     
-    @Column(nullable=false) @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(nullable=false) 
+//    @Temporal(javax.persistence.TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date NgaySinh;
     
     @Column(nullable=false, length=100)
@@ -54,8 +59,8 @@ public class NhanVien implements Serializable {
     public int getNhanVien_id() { return this.NhanVien_id; }
     public void setNhanVien_id(int NhanVien_id) { this.NhanVien_id = NhanVien_id; }
 
-    public Logins getLogin() { return this.Login; }
-    public void setLogin(Logins Login_id) { this.Login = Login; }
+    public Logins getLogin() {return Login;}
+    public void setLogin(Logins Login) {this.Login = Login;}
 
     public String getHo() { return this.Ho; }
     public void setHo(String Ho) { this.Ho = Ho; }

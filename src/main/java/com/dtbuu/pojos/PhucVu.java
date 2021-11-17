@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 
 /**
  *
@@ -26,6 +27,7 @@ public class PhucVu implements Serializable {
     private String PhucVu_ten;
     
     @Column(nullable=false)
+    @Max(value  = 1000000000)
     private float PhucVu_gia;
     
     @Column(length=100)

@@ -5,12 +5,21 @@
  */
 package com.dtbuu.configs;
 
+import com.dtbuu.formatter.LoginFormatter;
+import com.dtbuu.formatter.ViTriFormatter;
+import com.dtbuu.validators.HallNameValidator;
+import com.dtbuu.validators.WebAppValidator;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,7 +36,9 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.dtbuu.controllers",
                                "com.dtbuu.repositories",
-                               "com.dtbuu.services"})
+                               "com.dtbuu.services",
+                               "com.dtbuu.validators",
+                             })
 public class ConfigWebAppContext implements WebMvcConfigurer {
 
     @Override
@@ -40,6 +51,40 @@ public class ConfigWebAppContext implements WebMvcConfigurer {
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
         registry.addResourceHandler("/img/**").addResourceLocations("/resources/img/");
+    }
+    
+
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+        bean.setValidationMessageSource(messageSource());
+
+        return bean;
+    }
+
+    @Override
+    public org.springframework.validation.Validator getValidator() {
+        return validator();
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new LoginFormatter());
+        registry.addFormatter(new ViTriFormatter());
+    }
+    
+    
+    
+    @Bean
+    public WebAppValidator diadiemtochucValidator(){
+        Set<Validator> springValidators=new HashSet<>();
+        springValidators.add(new HallNameValidator());
+        
+        WebAppValidator v=new WebAppValidator();
+        v.setSpringValidator(springValidators);
+         
+        return v;
     }
     
     @Bean

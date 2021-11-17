@@ -10,6 +10,7 @@ import com.dtbuu.pojos.Logins;
 import com.dtbuu.repositories.RepoKhachHang;
 import com.dtbuu.repositories.RepoLogins;
 import com.dtbuu.services.SerKhachHang;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +35,11 @@ public class ImpSerKhachHang implements SerKhachHang {
         
         
         return this.repoKhachHang.addKhachHang(newCustomer);
+    }
+
+    @Override
+    public List<KhachHang> getKhachHangs(String keyword) {
+        return this.repoKhachHang.getKhachHangs(keyword);
     }
     
     
