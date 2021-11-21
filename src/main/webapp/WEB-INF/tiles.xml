@@ -18,6 +18,10 @@ and open the template in the editor.
         <put-attribute name="title" value="EveCen Home"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyHome.jsp"/>
     </definition>
+    <definition name="pageView" extends="baseLayout">
+        <put-attribute name="title" value="EveCen Home"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyView.jsp"/>
+    </definition>
     <definition name="pageSignIn" extends="baseLayout">
         <put-attribute name="title" value="EveCen SignIn"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodySignIn.jsp"/>
@@ -36,4 +40,104 @@ and open the template in the editor.
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyDashboard.jsp"/>
     </definition>
+    
+    <definition name="pageManagement" extends="baseLayout">
+        <put-attribute name="title" value="Management"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageTab.jsp" />
+    </definition>
+    
+    <definition name="manageHall" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý sảnh"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageHall.jsp" />
+    </definition>
+    <definition name="crudHall" extends="baseLayout">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageHallCRUD.jsp" />
+    </definition>
+    
+    <definition name="manageMenu" extends="baseLayout">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageMenu.jsp" />
+    </definition>
+    <definition name="crudMenu" extends="baseLayout">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageMenuCRUD.jsp" />
+    </definition>
+    <!--    ////////-->
+    <definition name="manageEmployee" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageEmployee.jsp" />
+    </definition>
+    <definition name="crudEmployee" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageEmployeeCRUD.jsp" />
+    </definition>
+<!--    ////////-->
+    <definition name="manageHost" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageHost.jsp" />
+    </definition>
+    <definition name="crudHost" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageHostCRUD.jsp" />
+    </definition>
+<!--    ////////-->
+    <definition name="manageEnt" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageEntertainment.jsp" />
+    </definition>
+    <definition name="crudEnt" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageEntertainmentCRUD.jsp" />
+    </definition>
+    
+    <definition name="manageDecor" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageDecor.jsp" />
+    </definition>
+    <definition name="crudDecor" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageDecorCRUD.jsp" />
+    </definition>
+    
+    <definition name="manageServe" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageServe.jsp" />
+    </definition>
+    <definition name="crudServe" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageServeCRUD.jsp" />
+    </definition>
+    <!--    ///////-->
+    <definition name="manageCustomer" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý dịch vụ"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyManageCustomer.jsp" />
+    </definition>
+    
+<!--    /////-->
+<definition name="bookingEvent" extends="baseLayout">
+        <put-attribute name="title" value="Đặt tiệc"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyBookingEvent.jsp"/>
+</definition>
+
+<definition name="payment" extends="baseLayout">
+        <put-attribute name="title" value="thanh toan"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyPayment.jsp"/>
+</definition>
 </tiles-definitions>

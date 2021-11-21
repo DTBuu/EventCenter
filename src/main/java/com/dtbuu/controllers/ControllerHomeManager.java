@@ -15,17 +15,26 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControllerHomeManager {
-    
-    
+
     @GetMapping("/HomeManager")
     public String pageHome(Model m) {
-          
+
         return "pageHomeManager";
     }
-    
+
+    @GetMapping("/tab")
+    public String pageManagement() {
+        return "pageManagement";
+    }
+
     @GetMapping("/Dashboard")
     public String pageDashboard(Model m) {
-          
+
         return "pageDashboard";
+    }
+
+    @GetMapping("/manageService")
+    public String manageService() {
+        return "manageService";
     }
 }

@@ -6,13 +6,16 @@
 package com.dtbuu.services;
 
 import com.dtbuu.pojos.KhachHang;
-import com.dtbuu.pojos.Logins;
+import java.util.List;
+import org.springframework.stereotype.Service;
 
 
 /**
  *
  * @author Buu Duong Tan
  */
+@Service
 public interface SerKhachHang {
     boolean addKhachHang_with_Login(KhachHang newCustome);
+    List<KhachHang> getKhachHangs(String keyword);
 }

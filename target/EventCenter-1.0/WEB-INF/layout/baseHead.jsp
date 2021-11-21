@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item-link" href="#">
+            <a class="nav-item-link" href="<core:url value="/pageEvent"/>">
                 <i class="uil uil-flower"></i>
                 Events
             </a>
@@ -33,6 +33,8 @@
                 Contact
             </a>
         </li>
+        
+        
         <li class="nav-item">
             <a class="nav-item-link" href="<core:url value="/sign-in"/>" onclick="myFunction()">
                 <i class="uil uil-user-square"></i>

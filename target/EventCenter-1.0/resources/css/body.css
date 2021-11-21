@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : Buu Duong Tan
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
+@import "compass/css3";
+@import url('https://getbootstrap.com/dist/css/bootstrap.css');
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 
 /*__________________________________________________bodyHome__________________________________________________*/
@@ -114,3 +116,341 @@ and open the template in the editor.
 }
 
 /*__________________________________________________bodySignUp__________________________________________________*/
+
+
+/*manage*/
+.text-center {
+    text-align: center!important;
+}
+
+th {
+    vertical-align: bottom;
+    text-align: center;
+}
+
+body {
+    background: none repeat scroll 0 0 white; }
+
+nav.sidebar-menu-collapsed {
+    width: 50px; }
+nav.sidebar-menu-expanded {
+    width: 106px; }
+nav.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    background: none repeat scroll 0 0 #0099ff;
+    color: white;
+    padding: 20px 10px; }
+nav.sidebar a#justify-icon {
+    outline: 0;
+    color: white;
+    font-size: 24px;
+    font-style: normal; }
+nav.sidebar a#logout-icon {
+    outline: 0;
+    color: white;
+    font-size: 24px;
+    font-style: normal;
+    position: absolute;
+    bottom: 10px;
+    left: 10px; }
+nav.sidebar ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 60px; }
+nav.sidebar ul li {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    list-style-type: none; }
+nav.sidebar ul li a.expandable {
+    outline: 0;
+    color: white;
+    text-decoration: none;
+    font-size: 20px; }
+nav.sidebar ul li a.expandable:hover {
+    color: #bbbbbb; }
+nav.sidebar ul li a.expandable span.expanded-element {
+    margin-left: 2px;
+    display: none;
+    font-size: 11px;
+    position: relative;
+    bottom: 2px; }
+nav.sidebar ul li.active {
+    background: none repeat scroll 0 0 black;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: -4px;
+    padding: 4px; }
+nav.sidebar ul li.active a.expandable {
+    color: white !important; }
+nav.sidebar ul li.active a.expandable:hover {
+    color: white !important; }
+/*HALL*/
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.btn-default {
+    background-color: #cccccc;
+    border-color: #212529;
+    color: #000000;
+}
+
+.deletebtn{
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    margin-left: 1rem;
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/trashcan.svg);
+    border: none;
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-color: #ff3333;
+    transition: .5s;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.editbtn{
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    margin-left: 1rem;
+    background-image: url(https://www.svgrepo.com/show/25801/edit.svg);
+    border: none;
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-color: #0066cc;
+    transition: .5s;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    display: inline-block;
+}
+.content-header {
+    padding: 15px 1rem;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.float-left {
+    float: left!important;
+}
+
+.float-right {
+    float: right!important;
+}
+/*Nav & menu manage*/
+
+
+[data-toggle="toggle"] {
+    display: none;
+}
+/*Nav & menu manage*/
+
+/*__________________________________________________bodyBookingEvent__________________________________________________*/
+/*body {
+    background-image: linear-gradient(to right, #7B1FA2, #E91E63)
+}*/
+
+.section {
+    position: relative;
+    height: 100vh
+}
+
+.section .section-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+#booking {
+    font-family: 'Raleway', sans-serif
+}
+
+.booking-form {
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    overflow: hidden;
+    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 20
+}
+
+.booking-form::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1
+}
+
+.booking-form .form-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px
+}
+
+.booking-form .form-header h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 42px;
+    margin: 0px;
+    color: #fff
+}
+
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px
+}
+
+.booking-form .form-control {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 40px;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px transparent;
+    box-shadow: 0px 0px 0px 2px transparent;
+    -webkit-transition: 0.2s;
+    transition: 0.2s
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+    box-shadow: 0px 0px 0px 2px #ff8846
+}
+
+.booking-form input[type="date"].form-control {
+    padding-top: 16px
+}
+
+.booking-form input[type="date"].form-control:invalid {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form input[type="date"].form-control+.form-label {
+    opacity: 1;
+    top: 10px
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.booking-form select.form-control:invalid {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+.booking-form select.form-control option {
+    color: #000
+}
+
+.booking-form .form-label {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    opacity: 0;
+    color: #ff8846;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    height: 15px;
+    line-height: 15px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all
+}
+
+.booking-form .form-group.input-not-empty .form-control {
+    padding-top: 16px
+}
+
+.booking-form .form-group.input-not-empty .form-label {
+    opacity: 1;
+    top: 10px
+}
+
+.booking-form .submit-btn {
+    color: #fff;
+    background-color: #e35e0a;
+    font-weight: 700;
+    height: 60px;
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1.3px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: 0.9
+}
