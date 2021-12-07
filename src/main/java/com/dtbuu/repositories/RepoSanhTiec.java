@@ -13,10 +13,17 @@ import java.util.List;
  * @author DiepHoangPhi
  */
 public interface RepoSanhTiec {
+
     Diadiemtochuc getSanhTiecbyID(int DDTC_id);
+
     boolean deleteSanh(int DDTC_id);
+
     boolean addOrUpdateSanh(Diadiemtochuc sanh);
-    List<Diadiemtochuc> getSanhTiecs(String keyword);
-    List<Diadiemtochuc> getSanhTiecs(float fromPrice, float toPrice);
+
+    List<Diadiemtochuc> getSanhTiecs(String keyword, int page);
+
+    List<Diadiemtochuc> getSanhTiecs();
+
+    long countSanhTiecs();
     //string kw
 }

@@ -42,6 +42,11 @@ public class ImpSerMenu implements SerMenu {
         return this.repoMenu.save(iim);
     }
 
+    @Override
+    public List<Menu> getMenus() {
+        return this.repoMenu.getMenus();
+    }
+
 
 
     

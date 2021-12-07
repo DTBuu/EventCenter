@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class ControllerPayment {
-//    @GetMapping("payment")
-//    public String detailView(Model model,HttpSession session){
-//        model.addAttribute("value", "asdfdsaf");
-//        return "redirect:/";
+//    @GetMapping("/payment")
+//    public String payment(Model model, HttpSession session)
+//    {
+//        return "asdas";
 //    }
-    
-   
 }
+
+

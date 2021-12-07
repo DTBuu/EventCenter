@@ -33,7 +33,7 @@ public class ImpRepoChuTri implements RepoChuTri {
 
     @Override
     @Transactional
-    public List<ChuTri> getChuTri(String keyword) {
+    public List<ChuTri> getChuTri(String keyword,int page) {
         Session s = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
         CriteriaQuery<ChuTri> query = builder.createQuery(ChuTri.class);
@@ -43,9 +43,13 @@ public class ImpRepoChuTri implements RepoChuTri {
         if (!keyword.isEmpty() && keyword != null) {
             Predicate p = builder.like(root.get("ChuTri_ten").as(String.class),
                      String.format("%%%s%%", keyword));
+            query=query.where(p);
         }
 
         Query q = s.createQuery(query);
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
     }
 
@@ -83,6 +87,22 @@ public class ImpRepoChuTri implements RepoChuTri {
             ex.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public long countChuTris() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From ChuTri");
+        
+        return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public List<ChuTri> getChuTris() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM ChuTri");
+        
+        return q.getResultList();
     }
 
 }

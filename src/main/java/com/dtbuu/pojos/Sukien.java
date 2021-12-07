@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -114,9 +115,26 @@ public class Sukien implements Serializable {
     public Sukien() {
     }
 
+    @Transient
+    String tempdDTCid;
+    @Transient
+    String tempmenuid;
+    @Transient
+    String tempgiaiTriid;
+    @Transient
+    String tempchuTriid;
+    @Transient
+    String tempphucVuid;
+    @Transient
+    String temptrangTriid;
+    @Transient
+    String tempkhachHangid;
+    @Transient
+    String tempquanLyPhuTrach;
 //    public Sukien(Integer suKienid) {
 //        this.suKienid = suKienid;
 //    }
+
     public Sukien(Integer suKienid, String suKienloai, String suKienten, int soBan, Date ngayBatDau) {
         this.suKienid = suKienid;
         this.suKienloai = suKienloai;
@@ -261,6 +279,8 @@ public class Sukien implements Serializable {
     public void setTrangTriid(TrangTri trangTriid) {
         this.trangTriid = trangTriid;
     }
+    
+    
 
 //    @Override
 //    public int hashCode() {
@@ -286,4 +306,68 @@ public class Sukien implements Serializable {
 //    public String toString() {
 //        return "com.dtbuu.pojos.Sukien[ suKienid=" + suKienid + " ]";
 //    }
+
+    public String getTempdDTCid() {
+        return tempdDTCid;
+    }
+
+    public void setTempdDTCid(String tempdDTCid) {
+        this.tempdDTCid = tempdDTCid;
+    }
+
+    public String getTempmenuid() {
+        return tempmenuid;
+    }
+
+    public void setTempmenuid(String tempmenuid) {
+        this.tempmenuid = tempmenuid;
+    }
+
+    public String getTempgiaiTriid() {
+        return tempgiaiTriid;
+    }
+
+    public void setTempgiaiTriid(String tempgiaiTriid) {
+        this.tempgiaiTriid = tempgiaiTriid;
+    }
+
+    public String getTempchuTriid() {
+        return tempchuTriid;
+    }
+
+    public void setTempchuTriid(String tempchuTriid) {
+        this.tempchuTriid = tempchuTriid;
+    }
+
+    public String getTempphucVuid() {
+        return tempphucVuid;
+    }
+
+    public void setTempphucVuid(String tempphucVuid) {
+        this.tempphucVuid = tempphucVuid;
+    }
+
+    public String getTemptrangTriid() {
+        return temptrangTriid;
+    }
+
+    public void setTemptrangTriid(String temptrangTriid) {
+        this.temptrangTriid = temptrangTriid;
+    }
+
+    public String getTempkhachHangid() {
+        return tempkhachHangid;
+    }
+
+    public void setTempkhachHangid(String tempkhachHangid) {
+        this.tempkhachHangid = tempkhachHangid;
+    }
+
+    public String getTempquanLyPhuTrach() {
+        return tempquanLyPhuTrach;
+    }
+
+    public void setTempquanLyPhuTrach(String tempquanLyPhuTrach) {
+        this.tempquanLyPhuTrach = tempquanLyPhuTrach;
+    }
 }

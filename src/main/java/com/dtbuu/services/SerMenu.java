@@ -16,8 +16,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface SerMenu {
+
     List<Menu> getMenus(String keyword);
+
+    List<Menu> getMenus();
+
     List<ItemsInMenus> getItemsInMenus(String keyword);
+
     Menu getMenuByID(int menuid);
+
     boolean save(ItemsInMenus itemsInMenus);
 }

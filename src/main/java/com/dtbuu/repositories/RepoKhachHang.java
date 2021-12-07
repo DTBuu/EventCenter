@@ -5,7 +5,6 @@
  */
 package com.dtbuu.repositories;
 
-
 import com.dtbuu.pojos.KhachHang;
 import com.dtbuu.pojos.Logins;
 import java.util.List;
@@ -15,6 +14,10 @@ import java.util.List;
  * @author Buu Duong Tan
  */
 public interface RepoKhachHang {
+
     boolean addKhachHang(KhachHang customer);
-    List<KhachHang> getKhachHangs(String keyword);
+
+    List<KhachHang> getKhachHangs(String keyword, int page);
+
+    long countKhachHangs();
 }

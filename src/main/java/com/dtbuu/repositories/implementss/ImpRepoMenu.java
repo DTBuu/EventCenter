@@ -97,5 +97,13 @@ public class ImpRepoMenu implements RepoMenu {
         }
         return false;
     }
+
+    @Override
+    public List<Menu> getMenus() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM Menu");
+        
+        return q.getResultList();
+    }
     
 }

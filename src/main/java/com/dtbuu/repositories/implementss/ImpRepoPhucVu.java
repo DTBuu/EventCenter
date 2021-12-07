@@ -32,7 +32,7 @@ public class ImpRepoPhucVu implements RepoPhucVu {
     
     @Override
     @Transactional
-    public List<PhucVu> getPhucVus(String keyword) {
+    public List<PhucVu> getPhucVus(String keyword,int page) {
         Session s=sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder=s.getCriteriaBuilder();
         CriteriaQuery<PhucVu> query =builder.createQuery(PhucVu.class);
@@ -40,11 +40,15 @@ public class ImpRepoPhucVu implements RepoPhucVu {
         query=query.select(root);
         
         if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("PhucVu_id").as(String.class)
+            Predicate p=builder.like(root.get("PhucVu_ten").as(String.class)
                     ,String.format("%%%s%%", keyword));
+            query=query.where(p);
         }
         
         Query q=s.createQuery(query);
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
     }
 
@@ -82,6 +86,22 @@ public class ImpRepoPhucVu implements RepoPhucVu {
             ex.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public long countPhucVus() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From PhucVu");
+        
+        return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public List<PhucVu> getPhucVus() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM PhucVu");
+        
+        return q.getResultList();
     }
     
 }

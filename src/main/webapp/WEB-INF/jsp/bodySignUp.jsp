@@ -20,13 +20,15 @@
 
 <div class="bodySignUp">
     <core:url value="/sign-up" var="signup"/>
-    <form:form method="post" action="${signup}" modelAttribute="newLogin">
+    <form:form method="post" action="${signup}"  enctype="multipart/form-data"    modelAttribute="newLogin">
         <form:input type="text" path="tempHo" placeholder=" Họ và tên lót"/>
         <form:input type="text" path="tempTen" placeholder=" Tên"/>
         <form:input type="text" path="tempNgaySinh" placeholder=" Ngày sinh"/>
         <form:input type="text" path="tempQueQuan" placeholder=" Quê quán"/>
         <form:input type="text" path="tempSdt" placeholder=" Số điện thoại"/>
         <form:input type="text" path="tempEmail" placeholder=" Email"/>
+
+        <form:input type="file" path="file" placeholder="Avatar" />
         
         <form:input type="text" path="Login_user" placeholder=" Username"/>
         <form:input type="password" path="Login_pass" placeholder=" Password"/>
@@ -34,6 +36,7 @@
         
         <button class="btn-sign-up" type="submit">sign up</button>
     </form:form>
+
         
 </div>
 

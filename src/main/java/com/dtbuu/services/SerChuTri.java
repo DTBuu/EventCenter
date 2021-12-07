@@ -16,11 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SerChuTri {
 
-    List<ChuTri> getChuTris(String keyword);
+    List<ChuTri> getChuTris(String keyword,int page);
+    
+    List<ChuTri> getChuTris();
 
     ChuTri getChuTriByID(int ChuTri_id);
 
     boolean addOrUpdate(ChuTri chuTri);
 
     boolean deleteChuTri(int ChuTri_id);
+    
+    long countChuTris();
 }

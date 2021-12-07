@@ -6,29 +6,35 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<div class="content-header clearfix">
-    <h1 class="float-left">Staff</h1> 
-    <!--button add,edit,delete-->
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <h1 class="float-left">Customer</h1>
+        </div>
+        <div class="col-auto">
+            <form   action="" class="d-flex">
+                <input class="form-control me-2" type="search" name="kw" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
     <div class="float-right">
-        <button class="btn btn-primary" href="#">
-            <i class="fa-plus-square"></i>
-            Add new
-        </button>
+        <a href="<c:url value="/"/>" class="btn btn-primary">Add new</a>
     </div>
 </div>
-
+<ul class="pagination" style="margin: auto;">
+    <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
+        <li class="page-item"><a class="page-link" href="<c:url value="/manageCustomer" />?page=${page}">${page}</a></li>
+        </c:forEach>
+</ul>
 <table class="table">
     <thead class="table-dark">
         <tr>
-<!--            <th rowspan="1" colspan="1">
-                <input class="mastercheckbox" type="checkbox">
-            </th>-->
             <th>ID</th>
             <th>Full Name</th>
             <th>Roles</th>
-            
             <th>Birthday</th>
             <th>Address</th>
             <th>Phone</th>
@@ -41,13 +47,9 @@
     <tbody>
         <c:forEach items="${khachhang}" var="khachhang">
             <tr id="khachhang${khachhang.khachHang_id}" class="align-middle">
-<!--                <td class="align-middle">
-                    <input name="checkboxSanh" value="1" type="checkbox" class="checkboxGroups">
-                </td>-->
                 <td>${khachhang.khachHang_id}</td>
                 <td>${khachhang.ho} ${khachhang.ten}</td>
                 <td>${khachhang.login.login_loai}</td>
-
                 <td>${khachhang.ngaySinh}</td>
                 <td>${khachhang.queQuan}</td>
                 <td>${khachhang.sdt}</td>

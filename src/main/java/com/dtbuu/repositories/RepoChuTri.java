@@ -14,11 +14,15 @@ import java.util.List;
  */
 public interface RepoChuTri {
 
-    List<ChuTri> getChuTri(String keyword);
+    List<ChuTri> getChuTri(String keyword,int page);
+    
+    List<ChuTri> getChuTris();
 
     ChuTri getChuTriByID(int ChuTri_id);
 
     boolean addOrUpdate(ChuTri chuTri);
 
     boolean deleteChuTri(int ChuTri_id);
+    
+    long countChuTris();
 }

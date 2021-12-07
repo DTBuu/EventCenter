@@ -22,8 +22,8 @@ public class ImpSerGiaiTri implements SerGiaiTri {
     private RepoGiaiTri repoGiaiTri;
 
     @Override
-    public List<GiaiTri> getGiaiTris(String keyword) {
-        return this.repoGiaiTri.getGiaiTris(keyword);
+    public List<GiaiTri> getGiaiTris(String keyword,int page) {
+        return this.repoGiaiTri.getGiaiTris(keyword, page);
     }
 
     @Override
@@ -39,5 +39,15 @@ public class ImpSerGiaiTri implements SerGiaiTri {
     @Override
     public boolean deleteGiaiTri(int i) {
         return this.repoGiaiTri.deleteGiaiTri(i);
+    }
+
+    @Override
+    public long countGiaiTris() {
+        return this.repoGiaiTri.countGiaiTris();
+    }
+
+    @Override
+    public List<GiaiTri> getGiaiTris() {
+        return this.repoGiaiTri.getGiaiTris();
     }
 }

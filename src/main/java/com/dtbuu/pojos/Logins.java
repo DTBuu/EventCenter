@@ -14,70 +14,119 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author Buu Duong Tan
  */
 @Entity
-@Table(name="Logins")
+@Table(name = "Logins")
 public class Logins implements Serializable {
-    
+
     public static final String MANAGER = "manager";
     public static final String STAFF = "staff";
     public static final String GUEST = "guest";
-    
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Login_id;
-    
-    @Column(nullable=false, length=100)
+
+    @Column(nullable = false, length = 100)
     private String Login_loai;
-    
-    @Column(nullable=false, length=100, unique=true)
+
+    @Column(nullable = false, length = 100, unique = true)
     private String Login_user;
-    
-    @Column(nullable=false, length=100)
+
+    @Column(nullable = false, length = 100)
     private String Login_pass;
-    
-    @Column(length=100)
+
+    @Column(length = 100)
     private String GhiChu;
-    
-    @Transient private String confirmPass;
-    
 
-    @Transient private String tempHo;
-    
-    @Transient private String tempTen;
-    
+    @Column
+    private String Login_avatar;
+
+    @Transient
+    private MultipartFile file;
+
+    @Transient
+    private String confirmPass;
+
+    @Transient
+    private String tempHo;
+
+    @Transient
+    private String tempTen;
+
 //    private ViTri ViTri;
-    
-    @Transient private String tempNgaySinh;
-    
-    @Transient private String tempQueQuan;
-   
-    @Transient private String tempSdt;
-    
-    @Transient private String tempEmail;
+    @Transient
+    private String tempNgaySinh;
 
+    @Transient
+    private String tempQueQuan;
 
-    public int getLogin_id() {return Login_id;}
-    public void setLogin_id(int Login_id) {this.Login_id = Login_id;}
+    @Transient
+    private String tempSdt;
 
-    public String getLogin_loai() {return Login_loai;}
-    public void setLogin_loai(String Login_loai) {this.Login_loai = Login_loai;}
+    @Transient
+    private String tempEmail;
 
-    public String getLogin_user() {return Login_user;}
-    public void setLogin_user(String Login_user) {this.Login_user = Login_user;}
-    
-    public String getLogin_pass() {return Login_pass;}
-    public void setLogin_pass(String Login_pass) {this.Login_pass = Login_pass;}
-    
-    public String getGhiChu() {return GhiChu;}
-    public void setGhiChu(String GhiChu) {this.GhiChu = GhiChu;}
+    public int getLogin_id() {
+        return Login_id;
+    }
 
-    public String getConfirmPass() {return confirmPass;}
-    public void setConfirmPass(String confirmPass) {this.confirmPass = confirmPass;}
+    public void setLogin_id(int Login_id) {
+        this.Login_id = Login_id;
+    }
+
+    public String getLogin_loai() {
+        return Login_loai;
+    }
+
+    public void setLogin_loai(String Login_loai) {
+        this.Login_loai = Login_loai;
+    }
+
+    public String getLogin_user() {
+        return Login_user;
+    }
+
+    public void setLogin_user(String Login_user) {
+        this.Login_user = Login_user;
+    }
+
+    public String getLogin_pass() {
+        return Login_pass;
+    }
+
+    public void setLogin_pass(String Login_pass) {
+        this.Login_pass = Login_pass;
+    }
+
+    public String getGhiChu() {
+        return GhiChu;
+    }
+
+    public void setGhiChu(String GhiChu) {
+        this.GhiChu = GhiChu;
+    }
+
+    public String getConfirmPass() {
+        return confirmPass;
+    }
+
+    public void setConfirmPass(String confirmPass) {
+        this.confirmPass = confirmPass;
+    }
+
+    public String getLogin_avatar() {
+        return Login_avatar;
+    }
+
+    public void setLogin_avatar(String Login_avatar) {
+        this.Login_avatar = Login_avatar;
+    }
 
     /**
      * @return the tempHo
@@ -163,5 +212,12 @@ public class Logins implements Serializable {
         this.tempEmail = tempEmail;
     }
 
-    
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
 }

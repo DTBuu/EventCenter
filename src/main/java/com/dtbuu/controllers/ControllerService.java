@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
@@ -44,8 +45,10 @@ public class ControllerService {
 
     //Xóa chủ trì
     @GetMapping("/manageHost")
-    public String manageHost(Model model) {
-        model.addAttribute("chutri", this.serChuTri.getChuTris(""));
+    public String manageHost(Model model,@RequestParam(value = "kwchutri", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        model.addAttribute("chutri", this.serChuTri.getChuTris(kw,page));
+        model.addAttribute("counter", this.serChuTri.countChuTris());
         return "manageHost";
     }
 
@@ -57,8 +60,9 @@ public class ControllerService {
 
     ///Xóa giải trí
     @GetMapping("/manageEnt")
-    public String manageEnt(Model model) {
-        model.addAttribute("giaitri", this.serGiaiTri.getGiaiTris(""));
+    public String manageEnt(Model model,@RequestParam(value = "kwgiaitri", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        model.addAttribute("giaitri", this.serGiaiTri.getGiaiTris(kw,page));
         return "manageEnt";
     }
 
@@ -70,8 +74,9 @@ public class ControllerService {
 
     //Xóa trang trí
     @GetMapping("/manageDecor")
-    public String manageDecor(Model model) {
-        model.addAttribute("trangtri", this.serTrangTri.getTrangTris(""));
+    public String manageDecor(Model model,@RequestParam(value = "kwtrangtri", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        model.addAttribute("trangtri", this.serTrangTri.getTrangTris(kw,page));
         return "manageDecor";
     }
 
@@ -83,8 +88,9 @@ public class ControllerService {
 
     //Xoa phuc vu
     @GetMapping("/manageServe")
-    public String manageServe(Model model) {
-        model.addAttribute("phucvu", this.serPhucVu.getPhucVus(""));
+    public String manageServe(Model model,@RequestParam(value = "kwphucvu", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        model.addAttribute("phucvu", this.serPhucVu.getPhucVus(kw,page));
         return "manageServe";
     }
 

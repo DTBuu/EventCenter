@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -24,9 +25,11 @@ public class ControllerCustomer {
     private SerKhachHang serKhachHang;
 
     @GetMapping("/manageCustomer")
-    public String manageCustomer(Model model) {
+    public String manageCustomer(Model model,@RequestParam(value = "kw", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 //        List<KhachHang> list = this.serKhachHang.loadTableNhanVien("");
-        model.addAttribute("khachhang", this.serKhachHang.getKhachHangs(""));
+        model.addAttribute("khachhang", this.serKhachHang.getKhachHangs(kw,page));
+        model.addAttribute("counter", this.serKhachHang.countKhachHangs());
         return "manageCustomer";
     }
 }

@@ -38,8 +38,13 @@ public class ImpSerKhachHang implements SerKhachHang {
     }
 
     @Override
-    public List<KhachHang> getKhachHangs(String keyword) {
-        return this.repoKhachHang.getKhachHangs(keyword);
+    public List<KhachHang> getKhachHangs(String keyword,int page) {
+        return this.repoKhachHang.getKhachHangs(keyword,page);
+    }
+
+    @Override
+    public long countKhachHangs() {
+        return this.repoKhachHang.countKhachHangs();
     }
     
     

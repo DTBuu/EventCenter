@@ -30,38 +30,72 @@ public class Diadiemtochuc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int DDTC_id;
-    
-    @Column(nullable = false,length = 100)
-    @NotNull 
-    @Size(max = 100,min = 5, message = "{diadiemtochuc.DDTC_ten.lenErr}")
+
+    @Column(nullable = false, length = 100)
+    @NotNull
+    @Size(max = 100, min = 5, message = "{diadiemtochuc.DDTC_ten.lenErr}")
     private String DDTC_ten;
 
     @Column(nullable = false)
-    @Min(value = 100, message ="{diadiemtochuc.DDTC_SoBanMax.tableMin}" )
+    @Min(value = 100, message = "{diadiemtochuc.DDTC_SoBanMax.tableMin}")
     private int DDTC_SoBanMax;
-    
+
     @Column(nullable = false)
-    @Max(value  = 10000000, message = "{diadiemtochuc.DDTC_GiaMotBan.lenErr}")
+    @Max(value = 10000000, message = "{diadiemtochuc.DDTC_GiaMotBan.lenErr}")
     private float DDTC_GiaMotBan;
 
-    @Column(name = "ghiChu" ,nullable = true,length = 100)
+    @Column(name = "ghiChu", nullable = true, length = 100)
     private String DDTC_GhiChu;
 
-    public int getDDTC_id() {return DDTC_id;} 
-    public void setDDTC_id(int DDTC_id) { this.DDTC_id = DDTC_id;}
+    @Column(name = "DDTC_hinhanh")
+    private String DDTC_hinhanh;
 
-    public String getDDTC_ten() {return DDTC_ten;}
-    public void setDDTC_ten(String DDTC_ten){this.DDTC_ten = DDTC_ten;}
+    public int getDDTC_id() {
+        return DDTC_id;
+    }
 
-    public int getDDTC_SoBanMax() {return DDTC_SoBanMax;}
-    public void setDDTC_SoBanMax(int DDTC_SoBanMax) {this.DDTC_SoBanMax = DDTC_SoBanMax;}
+    public void setDDTC_id(int DDTC_id) {
+        this.DDTC_id = DDTC_id;
+    }
 
-    public float getDDTC_GiaMotBan() {return DDTC_GiaMotBan;}
-    public void setDDTC_GiaMotBan(float DDTC_GiaMotBan) {this.DDTC_GiaMotBan = DDTC_GiaMotBan;}
-    
-    public String getDDTC_GhiChu() {return DDTC_GhiChu;}
-    public void setDDTC_GhiChu(String DDTC_GhiChu) {this.DDTC_GhiChu = DDTC_GhiChu;}
-    
+    public String getDDTC_ten() {
+        return DDTC_ten;
+    }
+
+    public void setDDTC_ten(String DDTC_ten) {
+        this.DDTC_ten = DDTC_ten;
+    }
+
+    public int getDDTC_SoBanMax() {
+        return DDTC_SoBanMax;
+    }
+
+    public void setDDTC_SoBanMax(int DDTC_SoBanMax) {
+        this.DDTC_SoBanMax = DDTC_SoBanMax;
+    }
+
+    public float getDDTC_GiaMotBan() {
+        return DDTC_GiaMotBan;
+    }
+
+    public void setDDTC_GiaMotBan(float DDTC_GiaMotBan) {
+        this.DDTC_GiaMotBan = DDTC_GiaMotBan;
+    }
+
+    public String getDDTC_GhiChu() {
+        return DDTC_GhiChu;
+    }
+
+    public void setDDTC_GhiChu(String DDTC_GhiChu) {
+        this.DDTC_GhiChu = DDTC_GhiChu;
+    }
+
+    public String getDDTC_hinhanh() {
+        return DDTC_hinhanh;
+    }
+
+    public void setDDTC_hinhanh(String DDTC_hinhanh) {
+        this.DDTC_hinhanh = DDTC_hinhanh;
+    }
+
 }
-
-

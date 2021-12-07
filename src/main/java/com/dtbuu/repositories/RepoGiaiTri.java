@@ -16,11 +16,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepoGiaiTri {
 
-    List<GiaiTri> getGiaiTris(String keyword);
+    List<GiaiTri> getGiaiTris(String keyword,int page);
+    
+    List<GiaiTri> getGiaiTris();
 
     GiaiTri getGiaiTriByID(int GiaiTri_id);
 
     boolean addOrUpdate(GiaiTri giaiTri);
 
     boolean deleteGiaiTri(int GiaiTri_id);
+    
+    long countGiaiTris();
 }

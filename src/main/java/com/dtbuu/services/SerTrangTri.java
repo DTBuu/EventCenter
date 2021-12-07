@@ -16,11 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SerTrangTri {
 
-    List<TrangTri> getTrangTris(String keyword);
+    List<TrangTri> getTrangTris(String keyword,int page);
+    
+    List<TrangTri> getTrangTris();
 
     TrangTri getTrangTriByID(int TrangTri_id);
 
     boolean addOrUpdate(TrangTri trangTri);
 
     boolean deleteTrangTri(int TrangTri_id);
+    
+    long countTrangTris();
 }

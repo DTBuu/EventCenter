@@ -7,24 +7,37 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<div class="content-header clearfix">
-    <h1 class="float-left">Halls</h1> 
-    <div class="float-right">
-        <div class="btn-group" role="group">
-            <a href="<c:url value="/crudHall"/>" class="btn btn-primary">Add new</a>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <h1 class="float-left">Halls</h1>
+        </div>
+        <div class="col-auto">
+            <form   action="" class="d-flex">
+                <input class="form-control me-2" type="search" name="kw" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
+    <div class="float-right">
+        <a href="<c:url value="/crudHall"/>" class="btn btn-primary">Add new</a>
+    </div>
 </div>
-
+<ul class="pagination" style="margin: auto;">
+    <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
+        <li class="page-item"><a class="page-link" href="<c:url value="/manageHall" />?page=${page}">${page}</a></li>
+        </c:forEach>
+</ul>
 <table class="table" id="table-hall">
     <thead class="table-dark">
         <tr>
-<!--            <th rowspan="1" colspan="1">
-                <div>
-                    <label> <input type="checkbox" class="check" id="checkAll"></label>
-                </div>
-            </th>-->
+            <!--            <th rowspan="1" colspan="1">
+                            <div>
+                                <label> <input type="checkbox" class="check" id="checkAll"></label>
+                            </div>
+                        </th>-->
             <th style="width:100px;">ID</th>
             <th style="width:300px;">Name</th>
             <th style="width:100px;">Table quantity</th>
@@ -37,11 +50,11 @@
     <tbody>
         <c:forEach items="${sanhtiec}" var="sanh"  >
             <tr id="sanh${sanh.DDTC_id}" class="align-middle">
-<!--                <td>
-                    <div class="checkbox">
-                        <label><input name="DDTC_id" value="$\{sanh.DDTC_id}" type="checkbox" class="checkboxsanhtiec"></label>
-                    </div>
-                </td>-->
+                <!--                <td>
+                                    <div class="checkbox">
+                                        <label><input name="DDTC_id" value="$\{sanh.DDTC_id}" type="checkbox" class="checkboxsanhtiec"></label>
+                                    </div>
+                                </td>-->
                 <td>${sanh.DDTC_id}</td> 
                 <td>${sanh.DDTC_ten}</td> 
                 <td>${sanh.DDTC_SoBanMax}</td> 

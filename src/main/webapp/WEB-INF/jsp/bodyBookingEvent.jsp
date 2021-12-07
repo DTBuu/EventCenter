@@ -9,35 +9,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
-<%--<c:url value="/bookingEvent" var="action"/>
-<form:form method="post" action="${action}" modelAttribute="bookingEvent">
-    <div class="content-header clearfix">
-        <h1 class="float-left">Test </h1> 
-    </div>
-    <div class="form-group"> 
-        <div class="form-group">
-            <form:select class="form-control" type="text" id="dDTCid" path="dDTCid.DDTC_id" required="required" placeholder="Hall">
-                <c:forEach items="${sanh}" var="cat">
-<!--                    <option value="" disable="" selected hidden>Hall</option>-->
-                    <option value="${cat.DDTC_id}" >${cat.DDTC_ten}</option>
-                </c:forEach>
-            </form:select>
-            <form:select class="form-control" type="text" id="giaTriid" path="giaiTriid.giaiTri_id" required="true">
-                <c:forEach items="${giaitri}" var="cat">
-<!--                    <option value="" selected hidden>Entertainment</option>-->
-                    <option value="${cat.giaiTri_id}" >${cat.giaiTri_ten}</option>
-                </c:forEach>
-            </form:select>
-            <form:input type="text" id="suKienten" path="suKienten" class="form-control text-box single-line"/><span class="form-label">Name</span> 
-
-        </div>
-        <input type="submit" value="Confirm" class="btn btn-primary"/>
-    </div>
-    ${valueController}
-</form:form>--%>
-
-
 <c:url value="/bookingEvent" var="action"/>
 <form:form method="post" action="${action}" modelAttribute="bookingEvent">
     <div id="booking" class="section">
@@ -46,7 +17,7 @@
                 <div class="row">
                     <div class="booking-form">
                         <div class="form-header">
-                            <h1>Booking Information</h1>
+                            <h1>Booking Information ${valueController}</h1>
                         </div>
                         <div>
                             <div class="form-group"> <form:input class="form-control" type="text" id="suKienten" path="suKienten" required="required"  placeholder="Event name(Birthday, Wedding, Ceremony,...)"/> <span class="form-label">Name</span> </div>
@@ -74,7 +45,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="menuid" path="menuid.menuid" required="required" placeholder="Menu">
+                                        <form:select class="form-control" type="text" id="menuid" path="tempmenuid" required="required" placeholder="Menu">
                                             <c:forEach items="${menu}" var="cat">
                                                 <option value="${cat.menuid}" >${cat.menuten}</option>
                                             </c:forEach>
@@ -86,7 +57,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <form:select class="form-control" type="text" id="chuTriid" path="chuTriid.chuTri_id" required="required">
+                                        <form:select class="form-control" type="text" id="chuTriid" path="tempchuTriid" required="required">
                                             <c:forEach items="${chutri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Host</option>-->
                                                 <option value="${cat.chuTri_id}" >${cat.chuTri_ten}</option>
@@ -96,7 +67,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="giaTriid" path="giaiTriid.giaiTri_id" required="required">
+                                        <form:select class="form-control" type="text" id="giaTriid" path="tempgiaiTriid" required="required">
                                             <c:forEach items="${giaitri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Entertainment</option>-->
                                                 <option value="${cat.giaiTri_id}" >${cat.giaiTri_ten}</option>
@@ -106,7 +77,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="trangTriid" path="trangTriid.trangTri_id" required="required">
+                                        <form:select class="form-control" type="text" id="trangTriid" path="temptrangTriid" required="required">
                                             <c:forEach items="${trangtri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Decoration</option>-->
                                                 <option value="${cat.trangTri_id}" >${cat.trangTri_ten}</option>
@@ -116,7 +87,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="phucVuid" path="phucVuid.phucVu_id" required="required">
+                                        <form:select class="form-control" type="text" id="phucVuid" path="tempphucVuid" required="required">
                                             <c:forEach items="${phucvu}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Serve</option>-->
                                                 <option value="${cat.phucVu_id}" >${cat.phucVu_ten}</option>

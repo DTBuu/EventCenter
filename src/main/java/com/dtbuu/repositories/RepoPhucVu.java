@@ -14,11 +14,15 @@ import java.util.List;
  */
 public interface RepoPhucVu {
 
-    List<PhucVu> getPhucVus(String keyword);
+    List<PhucVu> getPhucVus(String keyword,int page);
+    
+    List<PhucVu> getPhucVus();
 
     PhucVu getPhucVuByID(int PhucVu_id);
 
     boolean addOrUpdate(PhucVu phucVu);
 
     boolean deletePhucVu(int PhucVu_id);
+    
+    long countPhucVus();
 }

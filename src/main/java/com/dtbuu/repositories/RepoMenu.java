@@ -16,8 +16,14 @@ import java.util.List;
  * @author DiepHoangPhi
  */
 public interface RepoMenu {
+
     List<Menu> getMenus(String keyword);
+
+    List<Menu> getMenus();
+
     Menu getMenuByID(int menuid);
+
     List<ItemsInMenus> getItemsInMenus(String keyword);
+
     boolean save(ItemsInMenus itemsInMenus);
 }

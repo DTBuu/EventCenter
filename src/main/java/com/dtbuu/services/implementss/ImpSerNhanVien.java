@@ -24,8 +24,8 @@ public class ImpSerNhanVien implements SerNhanVien {
     private RepoNhanVien repoNhanVien;
 
     @Override
-    public List<NhanVien> loadTableNhanVien(String kw) {
-        return this.repoNhanVien.loadTableNhanVien(kw);
+    public List<NhanVien> loadTableNhanVien(String kw,int page) {
+        return this.repoNhanVien.loadTableNhanVien(kw,page);
         
         
     }
@@ -43,5 +43,10 @@ public class ImpSerNhanVien implements SerNhanVien {
     @Override
     public boolean deleteNhanVien(int nhanVien_id) {
         return this.repoNhanVien.deleteNhanVien(nhanVien_id);
+    }
+
+    @Override
+    public long countNhanViens() {
+        return this.repoNhanVien.countNhanViens();
     }
 }

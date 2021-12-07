@@ -31,7 +31,7 @@ public class ImpRepoTrangTri implements RepoTrangTri{
     private LocalSessionFactoryBean sessionFactory;
     
     @Override
-    public List<TrangTri> getTrangTris(String keyword) {
+    public List<TrangTri> getTrangTris(String keyword,int page) {
         Session s=sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder=s.getCriteriaBuilder();
         CriteriaQuery<TrangTri> query =builder.createQuery(TrangTri.class);
@@ -41,9 +41,13 @@ public class ImpRepoTrangTri implements RepoTrangTri{
         if (!keyword.isEmpty() && keyword!=null) {
             Predicate p=builder.like(root.get("TrangTri_ten").as(String.class)
                     ,String.format("%%%s%%", keyword));
+            query=query.where(p);
         }
         
         Query q=s.createQuery(query);
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
     }
 
@@ -81,6 +85,22 @@ public class ImpRepoTrangTri implements RepoTrangTri{
             ex.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public long countTrangTris() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From TrangTri");
+        
+        return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public List<TrangTri> getTrangTris() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM TrangTri");
+        
+        return q.getResultList();
     }
     
 }

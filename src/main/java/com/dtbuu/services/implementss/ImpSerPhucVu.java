@@ -22,8 +22,8 @@ public class ImpSerPhucVu implements SerPhucVu {
     private RepoPhucVu repoPhucVu;
     
     @Override
-    public List<PhucVu> getPhucVus(String keyword) {
-        return this.repoPhucVu.getPhucVus(keyword);
+    public List<PhucVu> getPhucVus(String keyword,int page) {
+        return this.repoPhucVu.getPhucVus(keyword,page);
     }
 
     @Override
@@ -39,6 +39,16 @@ public class ImpSerPhucVu implements SerPhucVu {
     @Override
     public boolean deletePhucVu(int i) {
         return this.repoPhucVu.deletePhucVu(i);
+    }
+
+    @Override
+    public long countPhucVus() {
+        return this.repoPhucVu.countPhucVus();
+    }
+
+    @Override
+    public List<PhucVu> getPhucVus() {
+        return this.repoPhucVu.getPhucVus();
     }
     
 }

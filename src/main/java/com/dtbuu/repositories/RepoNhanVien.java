@@ -13,8 +13,14 @@ import java.util.List;
  * @author Buu Duong Tan
  */
 public interface RepoNhanVien {
-    List<NhanVien> loadTableNhanVien(String kw);
-    NhanVien getNhanVienbyID (int NhanVien_id);
+
+    List<NhanVien> loadTableNhanVien(String kw, int page);
+
+    NhanVien getNhanVienbyID(int NhanVien_id);
+
     boolean addOrUpdateNhanVien(NhanVien nhanvien);
+
     boolean deleteNhanVien(int nhanVien_id);
+
+    long countNhanViens();
 }

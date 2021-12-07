@@ -22,6 +22,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-item-link" href="<core:url value="/bookingEvent"/>">
+            <i class="uil uil-flower"></i>
+            Event
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-item-link" href="<core:url value="/tab"/>" onclick="myFunction()">
             <i class="uil uil-apps"></i>
             Management
@@ -35,7 +41,8 @@
     </li>
 </ul>
 <a class="nav-item-user-box" href="#">
-    <i class="uil uil-user-square"></i>
+    <!--    <i class="uil uil-user-square"></i>-->
+    <img src="${currentUser.login_avatar}" class="rounded-circle"   style="width: 40px;"/> 
     ${pageContext.request.userPrincipal.name}
 </a>
 </div>

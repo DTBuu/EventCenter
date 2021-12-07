@@ -8,15 +8,9 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div>
-    <ul class="nav">
-        <li class="nav-item ">
-            <a class="nav-link active" style="color: red;" href="<core:url value="/manageHall"/>" >Restaurant Configuration-Hall</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color: red;" href="<core:url value="/manageEmployee"/>">Human Resource-Staff</a>
-        </li>
-
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Restaurant</a>
             <ul class="dropdown-menu">
@@ -45,8 +39,8 @@
             <a class="nav-link active" href="<core:url value="/manageCustomer"/>" >Customer</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<core:url value="/manageEmployee"/>">Cart</a>
+            <a class="nav-link" href="#">Cart</a>
         </li>
     </ul>
 </div>
-
+</nav>

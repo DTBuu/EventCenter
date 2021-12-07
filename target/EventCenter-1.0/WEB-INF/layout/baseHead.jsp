@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item-link" href="#">
+            <a class="nav-item-link" href="<core:url value="/pageAbout"/>">
                 <i class="uil uil-info-circle"></i>
                 About
             </a>
@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item-link" href="#">
+            <a class="nav-item-link" href="<core:url value="/pageContact"/>">
                 <i class="uil uil-envelope"></i>
                 Contact
             </a>

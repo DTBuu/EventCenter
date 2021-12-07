@@ -31,23 +31,9 @@ public class ImpRepoSanhTiec implements RepoSanhTiec {
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
-    public List<Diadiemtochuc> getSanhTiecsBase(String[] args, DiadiemtochucChecker c) {
-        Session s = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<Diadiemtochuc> query = builder.createQuery(Diadiemtochuc.class);
-        Root root = query.from(Diadiemtochuc.class);
-        query.select(root);
-
-        query = c.getWhere(builder, query, root, args);
-
-        Query q = s.createQuery(query);
-        return q.getResultList();
-
-    }
-
     @Override
     @Transactional
-    public List<Diadiemtochuc> getSanhTiecs(String keyword) {
+    public List<Diadiemtochuc> getSanhTiecs(String keyword,int page) {
         Session s=sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder=s.getCriteriaBuilder();
         CriteriaQuery<Diadiemtochuc> query =builder.createQuery(Diadiemtochuc.class);
@@ -55,20 +41,17 @@ public class ImpRepoSanhTiec implements RepoSanhTiec {
         query=query.select(root);
         
         if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("name").as(String.class)
+            Predicate p=builder.like(root.get("DDTC_ten").as(String.class)
                     ,String.format("%%%s%%", keyword));
+            query=query.where(p);
         }
         
         Query q=s.createQuery(query);
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
 
-//        return getSanhTiecsBase(new String[]{keyword}, (builder, query, root, args) -> {
-//            Predicate p = builder.like(root.get("dDTCten").as(String.class),
-//                    String.format("%%%s%%", args[0]));
-//            query = query.where(p);
-//
-//            return query;
-//        });
     }
 
     @Override
@@ -111,13 +94,20 @@ public class ImpRepoSanhTiec implements RepoSanhTiec {
     }
 
     @Override
-    public List<Diadiemtochuc> getSanhTiecs(float fromPrice, float toPrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Diadiemtochuc> getSanhTiecs() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM Diadiemtochuc");
+        
+        return q.getResultList();
+    }
+
+    @Override
+    public long countSanhTiecs() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From Diadiemtochuc");
+        
+        return Long.parseLong(q.getSingleResult().toString());
     }
 
 }
 
-interface DiadiemtochucChecker {
-
-    CriteriaQuery getWhere(CriteriaBuilder builder, CriteriaQuery q, Root root, String[] args);
-}

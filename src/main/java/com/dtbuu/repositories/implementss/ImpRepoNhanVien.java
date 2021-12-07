@@ -33,7 +33,7 @@ public class ImpRepoNhanVien implements RepoNhanVien {
 
     @Override
     @Transactional
-    public List<NhanVien> loadTableNhanVien(String kw) {
+    public List<NhanVien> loadTableNhanVien(String kw,int page) {
         Session ss = sessionFactory.getObject().getCurrentSession();
         //
         CriteriaBuilder builder = ss.getCriteriaBuilder();
@@ -42,14 +42,17 @@ public class ImpRepoNhanVien implements RepoNhanVien {
         query.select(root);
 
         if (!kw.isEmpty() && kw != null) {
-            Predicate p = builder.like(root.get("Ho").as(String.class),
+            Predicate p = builder.like(root.get("Ten").as(String.class),
                     String.format("%%%s%%", kw));
+            query=query.where(p);
         }
 
         Query q = ss.createQuery(query);
         //
 //        Query q = ss.createQuery("FROM NhanVien");
-
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
     }
 
@@ -88,5 +91,13 @@ public class ImpRepoNhanVien implements RepoNhanVien {
             ex.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public long countNhanViens() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From NhanVien");
+        
+        return Long.parseLong(q.getSingleResult().toString());
     }
 }

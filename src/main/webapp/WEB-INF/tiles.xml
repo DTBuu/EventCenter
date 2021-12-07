@@ -4,8 +4,28 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE tiles-definitions PUBLIC "-//ApacheSoftware Foundation//DTD Tiles Configuration 3.0//EN"
-                                   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!--   $Id: tiles-config_3_0.dtd 942533 2010-05-09 12:59:05Z apetrelli $
+
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.-->
+
+
 
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/layout/basePage.jsp">
@@ -21,6 +41,14 @@ and open the template in the editor.
     <definition name="pageView" extends="baseLayout">
         <put-attribute name="title" value="EveCen Home"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyView.jsp"/>
+    </definition>
+    <definition name="pageContact" extends="baseLayout">
+        <put-attribute name="title" value="EveCen Home"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyContact.jsp"/>
+    </definition>
+    <definition name="pageAbout" extends="baseLayout">
+        <put-attribute name="title" value="EveCen Home"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/bodyAbout.jsp"/>
     </definition>
     <definition name="pageSignIn" extends="baseLayout">
         <put-attribute name="title" value="EveCen SignIn"/>
@@ -79,7 +107,7 @@ and open the template in the editor.
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyManageEmployeeCRUD.jsp" />
     </definition>
-<!--    ////////-->
+    <!--    ////////-->
     <definition name="manageHost" extends="baseLayout">
         <put-attribute name="title" value="Quản lý dịch vụ"/>
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
@@ -90,7 +118,7 @@ and open the template in the editor.
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyManageHostCRUD.jsp" />
     </definition>
-<!--    ////////-->
+    <!--    ////////-->
     <definition name="manageEnt" extends="baseLayout">
         <put-attribute name="title" value="Quản lý dịch vụ"/>
         <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
@@ -130,14 +158,16 @@ and open the template in the editor.
         <put-attribute name="body" value="/WEB-INF/jsp/bodyManageCustomer.jsp" />
     </definition>
     
-<!--    /////-->
-<definition name="bookingEvent" extends="baseLayout">
+    <!--    /////-->
+    <definition name="bookingEvent" extends="baseLayout">
         <put-attribute name="title" value="Đặt tiệc"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyBookingEvent.jsp"/>
-</definition>
+    </definition>
 
-<definition name="payment" extends="baseLayout">
+    <definition name="payment" extends="baseLayout">
         <put-attribute name="title" value="thanh toan"/>
+        <put-attribute name="head" value="/WEB-INF/layout/baseHead-signed.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/bodyPayment.jsp"/>
-</definition>
+    </definition>
 </tiles-definitions>

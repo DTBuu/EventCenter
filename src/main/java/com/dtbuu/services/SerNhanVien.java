@@ -16,8 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SerNhanVien {
 
-    List<NhanVien> loadTableNhanVien(String kw);
+    List<NhanVien> loadTableNhanVien(String kw, int page);
+
     NhanVien getNhanVienByID(int NhanVien_id);
+
     boolean addOrUpdateNhanVien(NhanVien nhanvien);
+
     boolean deleteNhanVien(int nhanVien_id);
+
+    long countNhanViens();
 }

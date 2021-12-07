@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
@@ -37,9 +38,10 @@ public class ControllerHall {
     }
     
     @GetMapping("/manageHall")
-    public String manageHall(Model model) {
-//        List<Menu> list = this.serMenu.getMenus("");
-        model.addAttribute("sanhtiec", this.serSanhTiec.getSanhTiecs(""));
+    public String manageHall(Model model,@RequestParam(value = "kw", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        model.addAttribute("sanhtiec", this.serSanhTiec.getSanhTiecs(kw,page));
+        model.addAttribute("counter", this.serSanhTiec.countSanhTiecs());
         return "manageHall";
     }
     

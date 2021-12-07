@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  *
@@ -47,9 +48,11 @@ public class ControllerEmployee {
     }
     
     @GetMapping("/manageEmployee")
-    public String manageEmployee(Model model) {
-        List<NhanVien> list=this.serNhanVien.loadTableNhanVien("");
-        model.addAttribute("nhanvien", this.serNhanVien.loadTableNhanVien(""));
+    public String manageEmployee(Model model,@RequestParam(value = "kw", required = false, defaultValue = "") String kw,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+//        List<NhanVien> list=this.serNhanVien.loadTableNhanVien("");
+        model.addAttribute("nhanvien", this.serNhanVien.loadTableNhanVien(kw,page));
+        model.addAttribute("counter", this.serNhanVien.countNhanViens());
         return "manageEmployee";
     }
     

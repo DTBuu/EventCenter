@@ -16,12 +16,16 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SerSanhTiec {
 
-    List<Diadiemtochuc> getSanhTiecs(String keyword);
+    List<Diadiemtochuc> getSanhTiecs(String keyword, int page);
+    
+    List<Diadiemtochuc> getSanhTiecs();
 
     boolean addOrUpdate(Diadiemtochuc sanh);
 
     boolean deleteSanh(int DDTC_id);
 
     Diadiemtochuc getSanhTiecbyID(int DDTC_id);
+    
+    long countSanhTiecs();
 
 }

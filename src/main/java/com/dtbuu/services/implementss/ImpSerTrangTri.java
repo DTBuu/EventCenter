@@ -23,8 +23,8 @@ public class ImpSerTrangTri implements SerTrangTri {
     private RepoTrangTri repoTrangTri;
     
     @Override
-    public List<TrangTri> getTrangTris(String keyword) {
-        return this.repoTrangTri.getTrangTris(keyword);
+    public List<TrangTri> getTrangTris(String keyword,int page) {
+        return this.repoTrangTri.getTrangTris(keyword,page);
     }
     
     @Override
@@ -41,5 +41,15 @@ public class ImpSerTrangTri implements SerTrangTri {
     public boolean deleteTrangTri(int i) {
         return this.repoTrangTri.deleteTrangTri(i);
     }
-    
+
+    @Override
+    public long countTrangTris() {
+        return this.repoTrangTri.countTrangTris();
+    }
+
+    @Override
+    public List<TrangTri> getTrangTris() {
+        return this.repoTrangTri.getTrangTris();
+    }
+     
 }

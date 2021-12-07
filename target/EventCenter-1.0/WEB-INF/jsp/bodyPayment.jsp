@@ -17,20 +17,9 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card p-3">
-                <h6 class="text-uppercase">Payment Details ${value}    ${bookingEvent.suKienten} </h6>
-
-                <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required"> <span>Name on card</span> </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <i class="fa fa-credit-card"></i> <span>Card Number</span> </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-row">
-                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>Expiry</span> </div>
-                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>CVV</span> </div>
-                        </div>
-                    </div>
-                </div>
+                <h6 class="text-uppercase">Payment Details ${bookingEvent.dDTCid.DDTC_id}  
+                    ${bookingEvent.tempmenuid} </h6>
+                    ${bookingEvent}
                 <div class="mt-4 mb-4" style="text-align: left">
                     <h6 class="text-uppercase">Event Detail</h6>
                     <div class="container-booking-details">
@@ -38,32 +27,34 @@
                             <div class="item-name">
                                 Event name
                                 <span class="price">
-                                    $bookingEvent.suKienten}
+
                                 </span>
                             </div>
                             <div class="item-name">
                                 Type
                                 <span class="price">
-                                    $bookingEvent.suKienloai}
+
                                 </span>
                             </div>
                             <div class="item-name">
                                 Tables amount
                                 <span class="price">
-                                    $bookingEvent.soBan}
+
                                 </span>
                             </div>
                             <div class="item-name">
                                 Hall
                                 <span class="price">
-                                    $bookingEvent.dDTCid.DDTC_ten}
-                                    $valueController}
+                                    bookingEvent tempdDTCid
                                 </span>
                             </div>
                             <div class="item-name">
                                 Services
                                 <span class="price">
-                                    $bookingEvent.chuTriid.chuTri_id}
+                                    ${bookingEvent.tempchuTriid}<br>
+                                    ${bookingEvent.temptrangTriid}<br>
+                                    ${bookingEvent.tempgiaiTriid}<br>
+                                    ${bookingEvent.tempphucVuid}<br>
                                 </span>
                             </div>
                         </div>
@@ -76,8 +67,6 @@
             <div class="card card-blue p-3 text-white mb-3"> <span>You have to pay</span>
                 <div class="d-flex flex-row align-items-end mb-3">
                     <h1 class="mb-0 yellow">$549</h1> <span>.99</span>
-                </div> <span>Enjoy all the features and perk after you complete the payment</span> <a href="#" class="yellow decoration">Know all the features</a>
-                <div class="hightlight"> <span>100% Guaranteed support and update for the next 5 years.</span> </div>
             </div>
         </div>
     </div>

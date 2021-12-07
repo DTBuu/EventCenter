@@ -5,12 +5,18 @@
  */
 package com.dtbuu.services.implementss;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.dtbuu.pojos.Logins;
 import com.dtbuu.repositories.RepoLogins;
 import com.dtbuu.services.SerLogins;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,15 +34,23 @@ public class ImpSerLogins implements SerLogins {
     
     @Autowired private RepoLogins repoLogins;
     @Autowired private BCryptPasswordEncoder passwordEncoder;
+    @Autowired private Cloudinary cloudinary;
 
     @Override
     public boolean addLogin(Logins login) {
-        String raw_pass = login.getLogin_pass();
-        login.setLogin_pass(this.passwordEncoder.encode(raw_pass));
-        login.setLogin_loai(Logins.GUEST);
-        // SET AVATAR HERE !!!
-        
-        return this.repoLogins.addLogin(login);
+        try {
+            String raw_pass = login.getLogin_pass();
+            login.setLogin_pass(this.passwordEncoder.encode(raw_pass));
+            login.setLogin_loai(Logins.GUEST);
+            // SET AVATAR HERE !!!
+            Map r = this.cloudinary.uploader().upload(login.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+            login.setLogin_avatar((String) r.get("secure_url"));
+            return this.repoLogins.addLogin(login);
+        } catch (IOException ex) {
+//            Logger.getLogger(ImpSerLogins.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        return false;
     }
 
     @Override

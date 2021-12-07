@@ -67,7 +67,7 @@ public class ImpRepoKhachHang implements RepoKhachHang {
 //    }  
 
     @Override
-    public List<KhachHang> getKhachHangs(String keyword) {
+    public List<KhachHang> getKhachHangs(String keyword,int page) {
         Session s=sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder=s.getCriteriaBuilder();
         CriteriaQuery<KhachHang> query =builder.createQuery(KhachHang.class);
@@ -75,11 +75,23 @@ public class ImpRepoKhachHang implements RepoKhachHang {
         query=query.select(root);
         
         if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("ho").as(String.class)
+            Predicate p=builder.like(root.get("Ten").as(String.class)
                     ,String.format("%%%s%%", keyword));
+            query=query.where(p);
         }
         
         Query q=s.createQuery(query);
+        int max=6;
+        q.setMaxResults(max);
+        q.setFirstResult((page - 1) * max); 
         return q.getResultList();
+    }
+
+    @Override
+    public long countKhachHangs() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = session.createQuery("Select Count(*) From KhachHang");
+        
+        return Long.parseLong(q.getSingleResult().toString());
     }
 }

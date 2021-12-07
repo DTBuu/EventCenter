@@ -19,6 +19,7 @@ com\dtbuu\configs\ConfigTiles.class
 com\dtbuu\repositories\RepoSuKien.class
 com\dtbuu\repositories\implementss\ImpRepoBooking.class
 com\dtbuu\controllers\ControllerService.class
+com\dtbuu\configs\handlers\LoginSuccessHandler.class
 com\dtbuu\controllers\ControllerServiceCRUD.class
 com\dtbuu\controllers\ControllerHallCRUD.class
 com\dtbuu\pojos\NhanVien.class

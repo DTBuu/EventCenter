@@ -5,6 +5,8 @@
  */
 package com.dtbuu.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.dtbuu.formatter.LoginFormatter;
 import com.dtbuu.formatter.ViTriFormatter;
 import com.dtbuu.validators.HallNameValidator;
@@ -20,6 +22,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -35,10 +38,9 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.dtbuu.controllers",
-                               "com.dtbuu.repositories",
-                               "com.dtbuu.services",
-                               "com.dtbuu.validators",
-                             })
+    "com.dtbuu.repositories",
+    "com.dtbuu.services",
+    "com.dtbuu.validators",})
 public class ConfigWebAppContext implements WebMvcConfigurer {
 
     @Override
@@ -52,8 +54,6 @@ public class ConfigWebAppContext implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
         registry.addResourceHandler("/img/**").addResourceLocations("/resources/img/");
     }
-    
-
 
     @Bean
     public LocalValidatorFactoryBean validator() {
@@ -73,28 +73,45 @@ public class ConfigWebAppContext implements WebMvcConfigurer {
         registry.addFormatter(new LoginFormatter());
         registry.addFormatter(new ViTriFormatter());
     }
-    
-    
-    
+
     @Bean
-    public WebAppValidator diadiemtochucValidator(){
-        Set<Validator> springValidators=new HashSet<>();
+    public WebAppValidator diadiemtochucValidator() {
+        Set<Validator> springValidators = new HashSet<>();
         springValidators.add(new HallNameValidator());
-        
-        WebAppValidator v=new WebAppValidator();
+
+        WebAppValidator v = new WebAppValidator();
         v.setSpringValidator(springValidators);
-         
+
         return v;
     }
-    
+
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver irvr = new InternalResourceViewResolver();
         irvr.setViewClass(JstlView.class);
         irvr.setPrefix("/WEB-INF/jsp/");
         irvr.setSuffix(".jsp");
-        
+
         return irvr;
+    }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("UTF-8");
+
+        return resolver;
+    }
+
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "springweb",
+                "api_key", "264919483341848",
+                "api_secret", "-pD3kyVsldOX4Tpw6-rGv5IUi1A",
+                "secure", true
+        ));
+        return c;
     }
 
     @Bean

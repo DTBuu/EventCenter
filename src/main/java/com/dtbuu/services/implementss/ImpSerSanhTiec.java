@@ -5,6 +5,7 @@
  */
 package com.dtbuu.services.implementss;
 
+import com.cloudinary.Cloudinary;
 import com.dtbuu.pojos.Diadiemtochuc;
 import com.dtbuu.repositories.RepoSanhTiec;
 import com.dtbuu.services.SerSanhTiec;
@@ -23,10 +24,12 @@ public class ImpSerSanhTiec implements SerSanhTiec {
     
     @Autowired
     private RepoSanhTiec repoSanhTiec;
+    @Autowired
+    private Cloudinary cloudinary;
             
     @Override
-    public List<Diadiemtochuc> getSanhTiecs(String keyword) {
-        return this.repoSanhTiec.getSanhTiecs(keyword);
+    public List<Diadiemtochuc> getSanhTiecs(String keyword, int page) {
+        return this.repoSanhTiec.getSanhTiecs(keyword,page);
     }
 
     @Override
@@ -43,6 +46,16 @@ public class ImpSerSanhTiec implements SerSanhTiec {
     @Override
     public boolean deleteSanh(int DDTC_id) {
         return this.repoSanhTiec.deleteSanh(DDTC_id);
+    }
+
+    @Override
+    public long countSanhTiecs() {
+        return this.repoSanhTiec.countSanhTiecs();
+    }
+
+    @Override
+    public List<Diadiemtochuc> getSanhTiecs() {
+        return this.repoSanhTiec.getSanhTiecs();
     }
 
     

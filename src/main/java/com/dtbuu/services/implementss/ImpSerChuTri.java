@@ -22,8 +22,8 @@ public class ImpSerChuTri implements SerChuTri {
     private RepoChuTri repoChuTri;
     
     @Override
-    public List<ChuTri> getChuTris(String keyword) {
-        return this.repoChuTri.getChuTri(keyword);
+    public List<ChuTri> getChuTris(String keyword,int page) {
+        return this.repoChuTri.getChuTri(keyword,page);
     }
 
     @Override
@@ -39,6 +39,16 @@ public class ImpSerChuTri implements SerChuTri {
     @Override
     public boolean deleteChuTri(int ChuTri_id) {
         return this.repoChuTri.deleteChuTri(ChuTri_id);
+    }
+
+    @Override
+    public long countChuTris() {
+        return this.repoChuTri.countChuTris();
+    }
+
+    @Override
+    public List<ChuTri> getChuTris() {
+       return this.repoChuTri.getChuTris();
     }
     
 }
