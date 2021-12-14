@@ -22,5 +22,7 @@ public interface SerSuKien {
 
     boolean addOrUpdateSuKien(Sukien suKien);
 
+    Sukien save(Sukien sukien);
+
     List<Sukien> getSuKiens(String keyword);
 }

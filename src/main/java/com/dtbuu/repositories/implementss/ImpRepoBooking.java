@@ -6,12 +6,15 @@
 package com.dtbuu.repositories.implementss;
 
 import com.dtbuu.pojos.Cart;
+import com.dtbuu.pojos.Sukien;
 import com.dtbuu.repositories.RepoBooking;
 import com.dtbuu.repositories.RepoSuKien;
+
+import java.util.List;
 import java.util.Map;
-import jdk.javadoc.internal.doclets.toolkit.util.Utils;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.userdetails.User;
@@ -33,40 +36,20 @@ public class ImpRepoBooking implements RepoBooking{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean addSuKien(Map<Integer, Cart> cart) {
-        return false;
-//        if (cart == null) {
-//            return false;
-//        }
-//
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//
-//        Map<String, Integer> stats = Utils.getCartStats(cart);
-//
-//        try {
-//            SaleOrder order = new SaleOrder();
-//            order.setAmount(stats.get("totalAmount"));
-//            order.setUser(session.get(User.class, 6));
-//            session.save(order);
-//
-//            cart.values().stream().map(c -> {
-//                OrderDetail d = new OrderDetail();
-//                d.setSaleOrder(order);
-//                d.setQuantity(c.getQuantity());
-//                d.setPrice(c.getPrice());
-//                d.setProduct(this.productRepository.getProductById(c.getProductId()));
-//                return d;
-//            }).forEachOrdered(d -> {
-//                session.save(d);
-//            });
-//            
-//            return true;
-//        } catch (HibernateException ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        return false;
+    public boolean addSuKien(Sukien event) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        Sukien sukien = (Sukien) session.save(event);
+        return sukien == null? false : true;
     }
-    
-    
+
+    @Override
+    public Sukien findById(int id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        String sql = "SELECT s FROM Sukien s where s.suKienid = " + id;
+        Query<Sukien> query = session.createQuery(sql);
+        List<Sukien> list = query.list();
+        return list.isEmpty()? null : list.get(0);
+    }
+
+
 }

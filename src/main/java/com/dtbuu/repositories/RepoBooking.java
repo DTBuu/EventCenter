@@ -6,6 +6,8 @@
 package com.dtbuu.repositories;
 
 import com.dtbuu.pojos.Cart;
+import com.dtbuu.pojos.Sukien;
+
 import java.util.Map;
 
 /**
@@ -13,5 +15,6 @@ import java.util.Map;
  * @author DiepHoangPhi
  */
 public interface RepoBooking {
-        boolean addSuKien(Map<Integer ,Cart> cart);
+        boolean addSuKien(Sukien event);
+        Sukien findById(int id);
 }

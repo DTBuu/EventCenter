@@ -43,13 +43,10 @@ public class ImpRepoSuKien implements RepoSuKien{
     public boolean addOrUpdateSuKien(Sukien suKien) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
-            if (suKien.getSuKienid()>0) {
-                s.update(suKien);
-            } else {
+            if (suKien.getSuKienid()==null) {
                 s.save(suKien);
+                return true;
             }
-            return true;
-
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }

@@ -5,12 +5,20 @@
  */
 package com.dtbuu.utils;
 
+import com.dtbuu.pojos.Sukien;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author DiepHoangPhi
  */
 public class Utils {
-    public static int totalBill(){
-    return 0;
+    public static Map<String,Long> totalBill(Map<Integer,Sukien> sukien){
+        Long totalAmount = 0L, totalBill = 0L;
+        
+        
+        
+        return totalBill(sukien);
     }
 }

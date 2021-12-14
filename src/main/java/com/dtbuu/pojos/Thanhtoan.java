@@ -31,13 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "thanhtoan")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Thanhtoan.findAll", query = "SELECT t FROM Thanhtoan t"),
-    @NamedQuery(name = "Thanhtoan.findByThanhToanid", query = "SELECT t FROM Thanhtoan t WHERE t.thanhToanid = :thanhToanid"),
-    @NamedQuery(name = "Thanhtoan.findByNgayThanhToan", query = "SELECT t FROM Thanhtoan t WHERE t.ngayThanhToan = :ngayThanhToan"),
-    @NamedQuery(name = "Thanhtoan.findBySoTien", query = "SELECT t FROM Thanhtoan t WHERE t.soTien = :soTien"),
-    @NamedQuery(name = "Thanhtoan.findByPhuongThuc", query = "SELECT t FROM Thanhtoan t WHERE t.phuongThuc = :phuongThuc"),
-    @NamedQuery(name = "Thanhtoan.findByGhiChu", query = "SELECT t FROM Thanhtoan t WHERE t.ghiChu = :ghiChu")})
+
 public class Thanhtoan implements Serializable {
 
     private static final long serialVersionUID = 1L;

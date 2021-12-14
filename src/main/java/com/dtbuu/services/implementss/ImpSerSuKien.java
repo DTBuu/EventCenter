@@ -38,6 +38,15 @@ public class ImpSerSuKien implements SerSuKien {
     }
 
     @Override
+    public Sukien save(Sukien sukien) {
+        boolean isSuccess = repoSuKien.addOrUpdateSuKien(sukien);
+        if(isSuccess){
+            return repoSuKien.getSuKienbyID(sukien.getSuKienid());
+        }
+        return null;
+    }
+
+    @Override
     public List<Sukien> getSuKiens(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

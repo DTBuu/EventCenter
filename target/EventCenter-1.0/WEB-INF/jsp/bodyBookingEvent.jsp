@@ -17,10 +17,12 @@
                 <div class="row">
                     <div class="booking-form">
                         <div class="form-header">
-                            <h1>Booking Information ${valueController}</h1>
+                            <h1>Booking Information</h1>
                         </div>
                         <div>
-                            <div class="form-group"> <form:input class="form-control" type="text" id="suKienten" path="suKienten" required="required"  placeholder="Event name(Birthday, Wedding, Ceremony,...)"/> <span class="form-label">Name</span> </div>
+
+                            <div class="form-group"> <form:input class="form-control" type="text" id="suKienten" path="suKienten" required="required"  placeholder="Event name"/> <span class="form-label">Name</span> </div>
+                            <div class="form-group"> <form:input class="form-control" type="text" id="suKienloai" path="suKienloai" required="required"  placeholder="Event type (Birthday, Wedding, Ceremony,...)"/> <span class="form-label">Type</span> </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group"> <form:input class="form-control" type="date" id="ngayBatDau" path="ngayBatDau" required="required" /> <span class="form-label">Start date</span> </div>
@@ -31,25 +33,25 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="dDTCid" path="dDTCid.DDTC_id" required="required" placeholder="Hall">
+                                    <div class="form-group">
+                                        <select class="form-control" type="text" name="ddtcId" id="" path="dDTCid.DDTC_id" required="required" placeholder="Hall">
                                             <c:forEach items="${sanh}" var="cat">
-                                                <option value="${cat.DDTC_id}" >${cat.DDTC_ten}</option>
+                                                <option value="${cat.DDTC_id}" id="ddtcId" >${cat.DDTC_ten}</option>
                                             </c:forEach>
-                                        </form:select>
-                                        <span class="form-label">Hall</span> 
+                                        </select>
+                                        <span class="form-label">Hall</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group"> <form:input class="form-control" type="number" id="soBan" path="soBan" required="required" placeholder="No of tables"/> <span class="form-label">No of tables</span> </div>
+                                    <div class="form-group"> <form:input class="form-control" type="number" id="soBan" path="soBan" required="required" placeholder="Nos. of tables"/> <span class="form-label">No of tables</span> </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="menuid" path="tempmenuid" required="required" placeholder="Menu">
+                                    <div class="form-group">
+                                        <select class="form-control" type="text" name="menuid" path="menuid.menuid" required="required" placeholder="Menu">
                                             <c:forEach items="${menu}" var="cat">
                                                 <option value="${cat.menuid}" >${cat.menuten}</option>
                                             </c:forEach>
-                                        </form:select>
+                                        </select>
                                         <span class="form-label">Menu</span> </div>
                                 </div>
                             </div>
@@ -57,54 +59,46 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <form:select class="form-control" type="text" id="chuTriid" path="tempchuTriid" required="required">
+                                        <select class="form-control" type="text" name="chuTriid" path="chuTriid.chuTri_id" required="required">
                                             <c:forEach items="${chutri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Host</option>-->
                                                 <option value="${cat.chuTri_id}" >${cat.chuTri_ten}</option>
                                             </c:forEach>
-                                        </form:select>
+                                        </select>
                                         <span class="select-arrow"></span> <span class="form-label"></span> </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="giaTriid" path="tempgiaiTriid" required="required">
+                                    <div class="form-group">
+                                        <select class="form-control" type="text" name="giaTriid" path="giaiTriid.giaiTri_id" required="required">
                                             <c:forEach items="${giaitri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Entertainment</option>-->
                                                 <option value="${cat.giaiTri_id}" >${cat.giaiTri_ten}</option>
                                             </c:forEach>
-                                        </form:select>
+                                        </select>
                                         <span class="select-arrow"></span> <span class="form-label"></span> </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="trangTriid" path="temptrangTriid" required="required">
+                                    <div class="form-group">
+                                        <select class="form-control" type="text" name="trangTriid" path="trangTriid.trangTri_id" required="required">
                                             <c:forEach items="${trangtri}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Decoration</option>-->
                                                 <option value="${cat.trangTri_id}" >${cat.trangTri_ten}</option>
                                             </c:forEach>
-                                        </form:select>
+                                        </select>
                                         <span class="select-arrow"></span> <span class="form-label"></span> </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group"> 
-                                        <form:select class="form-control" type="text" id="phucVuid" path="tempphucVuid" required="required">
+                                    <div class="form-group">
+                                        <select class="form-control" type="text" name="phucVuid" path="phucVuid.phucVu_id" required="required">
                                             <c:forEach items="${phucvu}" var="cat">
                                                 <!--                                                <option value="" selected hidden>Serve</option>-->
                                                 <option value="${cat.phucVu_id}" >${cat.phucVu_ten}</option>
                                             </c:forEach>
-                                        </form:select>
+                                        </select>
                                         <span class="select-arrow"></span> <span class="form-label"></span> </div>
                                 </div>
                             </div>
                         </div>
-                        <!--                        <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group"> <input class="form-control" type="email" placeholder="Enter your Email"> <span class="form-label">Email</span> </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter you Phone"> <span class="form-label">Phone</span> </div>
-                                                    </div>
-                                                </div>-->
                         <div class="form-btn"><div class="form-group"><input type="submit" class="submit-btn" value="Book Now"/></div></div>
                     </div>
                 </div>

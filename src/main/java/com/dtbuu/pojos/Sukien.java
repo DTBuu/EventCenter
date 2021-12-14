@@ -37,16 +37,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "sukien")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Sukien.findAll", query = "SELECT s FROM Sukien s"),
-    @NamedQuery(name = "Sukien.findBySuKienid", query = "SELECT s FROM Sukien s WHERE s.suKienid = :suKienid"),
-    @NamedQuery(name = "Sukien.findBySuKienloai", query = "SELECT s FROM Sukien s WHERE s.suKienloai = :suKienloai"),
-    @NamedQuery(name = "Sukien.findBySuKienten", query = "SELECT s FROM Sukien s WHERE s.suKienten = :suKienten"),
-    @NamedQuery(name = "Sukien.findBySoBan", query = "SELECT s FROM Sukien s WHERE s.soBan = :soBan"),
-    @NamedQuery(name = "Sukien.findByNgayBatDau", query = "SELECT s FROM Sukien s WHERE s.ngayBatDau = :ngayBatDau"),
-    @NamedQuery(name = "Sukien.findByNgayKetThuc", query = "SELECT s FROM Sukien s WHERE s.ngayKetThuc = :ngayKetThuc"),
-    @NamedQuery(name = "Sukien.findByPhuThu", query = "SELECT s FROM Sukien s WHERE s.phuThu = :phuThu"),
-    @NamedQuery(name = "Sukien.findByGhiChu", query = "SELECT s FROM Sukien s WHERE s.ghiChu = :ghiChu")})
+
 public class Sukien implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +47,7 @@ public class Sukien implements Serializable {
     @Column(name = "SuKien_id")
     private Integer suKienid;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "SuKien_loai")
     private String suKienloai;
@@ -109,7 +100,7 @@ public class Sukien implements Serializable {
     @JoinColumn(name = "TrangTri_id", referencedColumnName = "TrangTri_id")
     @ManyToOne(optional = false)
     private TrangTri trangTriid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "suKienid")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "suKienid")
     private Collection<Thanhtoan> thanhtoanCollection;
 
     public Sukien() {
@@ -135,6 +126,12 @@ public class Sukien implements Serializable {
 //        this.suKienid = suKienid;
 //    }
 
+    public float getTotalFee(){
+        float total = chuTriid.getChuTri_gia() + dDTCid.getDDTC_GiaMotBan() * soBan
+                + giaiTriid.getGiaiTri_gia() + phucVuid.getPhucVu_gia() + trangTriid.getTrangTri_gia();
+        return total;
+    }
+    
     public Sukien(Integer suKienid, String suKienloai, String suKienten, int soBan, Date ngayBatDau) {
         this.suKienid = suKienid;
         this.suKienloai = suKienloai;
