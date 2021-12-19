@@ -132,6 +132,11 @@ public class Sukien implements Serializable {
         return total;
     }
     
+    public Logins getKhachHang(){
+        Logins khachHang=khachHangid.getLogin();
+        return khachHang;
+    }
+    
     public Sukien(Integer suKienid, String suKienloai, String suKienten, int soBan, Date ngayBatDau) {
         this.suKienid = suKienid;
         this.suKienloai = suKienloai;

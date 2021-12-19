@@ -25,11 +25,11 @@
         <a href="<c:url value="/crudEnt"/>" class="btn btn-primary">Add new</a>
     </div>
 </div>
-<!--<ul class="pagination" style="margin: auto;">
+<ul class="pagination" style="margin: auto;">
     <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
-        <li class="page-item"><a class="page-link" href="<c:url value="/manageEntertainment" />?page=${page}">${page}</a></li>
+        <li class="page-item"><a class="page-link" href="<c:url value="/manageEnt" />?page=${page}">${page}</a></li>
         </c:forEach>
-</ul>-->
+</ul>
 <table class="table" id="table-hall">
     <thead class="table-dark">
         <tr>

@@ -6,9 +6,7 @@
 package com.dtbuu.repositories.implementss;
 
 import com.dtbuu.pojos.KhachHang;
-import com.dtbuu.pojos.Logins;
 import com.dtbuu.repositories.RepoKhachHang;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -29,61 +27,41 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class ImpRepoKhachHang implements RepoKhachHang {
-    
-    @Autowired private LocalSessionFactoryBean sessionFactory;
+
+    @Autowired
+    private LocalSessionFactoryBean sessionFactory;
 
     @Override
     public boolean addKhachHang(KhachHang customer) {
-        
+
         Session ss = sessionFactory.getObject().getCurrentSession();
         try {
             ss.save(customer);
             return true;
-        }
-        catch (HibernateException he) {
+        } catch (HibernateException he) {
             System.err.println(he.getMessage());
         }
         return false;
     }
 
-//    @Override
-//    public List<KhachHang> getKhachHang(String key) {
-//        
-//        Session ss = sessionFactory.getObject().getCurrentSession();
-//        
-//        CriteriaBuilder cb = ss.getCriteriaBuilder();
-//        CriteriaQuery<KhachHang> cq = cb.createQuery(KhachHang.class);
-//        Root root = cq.from(KhachHang.class);
-//        cq = cq.select(root);
-//        
-//        if(!key.isEmpty()) {
-//            Predicate p = cb.equal(root.get("???").as(String.class), key.trim());
-//            cq = cq.where(p);
-//        }
-//        
-//        Query query = ss.createQuery(cq);
-//        
-//        return query.getResultList();
-//    }  
-
     @Override
-    public List<KhachHang> getKhachHangs(String keyword,int page) {
-        Session s=sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder=s.getCriteriaBuilder();
-        CriteriaQuery<KhachHang> query =builder.createQuery(KhachHang.class);
-        Root root=query.from(KhachHang.class);
-        query=query.select(root);
-        
-        if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("Ten").as(String.class)
-                    ,String.format("%%%s%%", keyword));
-            query=query.where(p);
+    public List<KhachHang> getKhachHangs(String keyword, int page) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<KhachHang> query = builder.createQuery(KhachHang.class);
+        Root root = query.from(KhachHang.class);
+        query = query.select(root);
+
+        if (!keyword.isEmpty() && keyword != null) {
+            Predicate p = builder.like(root.get("Ten").as(String.class),
+                     String.format("%%%s%%", keyword));
+            query = query.where(p);
         }
-        
-        Query q=s.createQuery(query);
-        int max=6;
+
+        Query q = s.createQuery(query);
+        int max = 6;
         q.setMaxResults(max);
-        q.setFirstResult((page - 1) * max); 
+        q.setFirstResult((page - 1) * max);
         return q.getResultList();
     }
 
@@ -91,7 +69,42 @@ public class ImpRepoKhachHang implements RepoKhachHang {
     public long countKhachHangs() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         org.hibernate.query.Query q = session.createQuery("Select Count(*) From KhachHang");
-        
+
         return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public KhachHang getKhachHangByLoginID(int Login) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<KhachHang> query = builder.createQuery(KhachHang.class);
+        Root<KhachHang> root = query.from(KhachHang.class);
+//        query = query.select(root);
+        query.select(root).where(builder.equal(root.get("KhachHang_id"), Login));
+        Query q=s.createQuery(query);
+        q.setMaxResults(1);
+        List<KhachHang> result = q.getResultList();
+        
+        return result.get(0);
+        
+        
+    }
+
+    @Override
+    public List<KhachHang> findKhachHangByLoginID(String login_id) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<KhachHang> query = builder.createQuery(KhachHang.class);
+        Root root = query.from(KhachHang.class);
+        query = query.select(root);
+
+        if (!login_id.isEmpty() && login_id != null) {
+            Predicate p = builder.like(root.get("Login").as(String.class),
+                     String.format("%%%s%%", login_id));
+            query = query.where(p);
+        }
+
+        Query q = s.createQuery(query);
+        return q.getResultList();
     }
 }

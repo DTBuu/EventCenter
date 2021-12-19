@@ -30,10 +30,6 @@ public class ImpSerKhachHang implements SerKhachHang {
 
     @Override
     public boolean addKhachHang_with_Login(KhachHang newCustomer) {
-        
-        
-        
-        
         return this.repoKhachHang.addKhachHang(newCustomer);
     }
 
@@ -41,10 +37,20 @@ public class ImpSerKhachHang implements SerKhachHang {
     public List<KhachHang> getKhachHangs(String keyword,int page) {
         return this.repoKhachHang.getKhachHangs(keyword,page);
     }
+    
+    @Override
+    public List<KhachHang> findKhachHangByLoginID(String login_id){
+        return this.repoKhachHang.findKhachHangByLoginID(login_id);
+    }
 
     @Override
     public long countKhachHangs() {
         return this.repoKhachHang.countKhachHangs();
+    }
+
+    @Override
+    public KhachHang getKhachHangByLoginID(int Login) {
+        return  this.repoKhachHang.getKhachHangByLoginID(Login);
     }
     
     

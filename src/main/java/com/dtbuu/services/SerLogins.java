@@ -5,6 +5,7 @@
  */
 package com.dtbuu.services;
 
+import com.dtbuu.pojos.KhachHang;
 import com.dtbuu.pojos.Logins;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author Buu Duong Tan
  */
 public interface SerLogins extends UserDetailsService {
+
     boolean addLogin(Logins login);
+
     List<Logins> getLogins(String key);
+
+    Logins getLoginsAuth();
 }

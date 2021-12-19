@@ -24,6 +24,10 @@ public interface SerMenu {
     List<ItemsInMenus> getItemsInMenus(String keyword);
 
     Menu getMenuByID(int menuid);
+    
+    ItemsInMenus getItemsInMenusByID(int menuid);
 
     boolean save(ItemsInMenus itemsInMenus);
+
+    boolean saveMenu(Menu menuid);
 }

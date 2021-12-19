@@ -13,6 +13,10 @@ import java.util.List;
  * @author Buu Duong Tan
  */
 public interface RepoLogins {
+
     boolean addLogin(Logins login);
+
     List<Logins> getLogins(String key);
+    
+    Logins getLoginsAuth();
 }

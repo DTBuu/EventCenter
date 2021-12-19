@@ -17,6 +17,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,5 +65,22 @@ public class ImpRepoLogins implements RepoLogins {
         Query query = ss.createQuery(cq);
         
         return query.getResultList();
+    }
+
+    @Override
+    public Logins getLoginsAuth() {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String login_id = loggedInUser.getName();
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Logins> query = builder.createQuery(Logins.class);
+        Root root = query.from(Logins.class);
+        query.select(root);
+        Predicate p = builder.equal(root.get("Login_id").as(String.class), login_id.trim());
+        query = query.where(p);
+        Query q = session.createQuery(query);
+        List<Logins> users = q.getResultList();
+        Logins u = users.get(0);
+        return u;
     }
 }

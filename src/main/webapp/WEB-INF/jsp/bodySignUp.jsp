@@ -28,7 +28,7 @@
         <form:input type="text" path="tempSdt" placeholder=" Số điện thoại"/>
         <form:input type="text" path="tempEmail" placeholder=" Email"/>
 
-        <form:input type="file" path="file" placeholder="Avatar" />
+        <form:input type="file" required="required" path="file" placeholder="Avatar" />
         
         <form:input type="text" path="Login_user" placeholder=" Username"/>
         <form:input type="password" path="Login_pass" placeholder=" Password"/>

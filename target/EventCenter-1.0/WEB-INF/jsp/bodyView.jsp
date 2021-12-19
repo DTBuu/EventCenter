@@ -16,10 +16,17 @@
     </form>
 </div>
 
+<div class="page-content page-container" id="page-content">
+    <div class="pagination">
+        <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
+            <li class="page-item"><a class="page-link" href="<c:url value="/pageEvent" />?page=${page}">${page}</a></li>
+            </c:forEach>
+    </div>
+</div>
 <div class="row">
     <c:forEach var="v" items="${view}">
-        <div class="col-md-4 col-xs-9" style="padding: 20px">
-            <div class="card" style="width: 18rem; height: 20rem ">
+        <div class="col-md-4 col-xs-9" style="padding: 10px">
+            <div class="card" >
                 <a href="<c:url value="/pageEvent/${v.DDTC_id}" />">
                     <c:choose>
                         <c:when test="${v.DDTC_hinhanh!= null && v.DDTC_hinhanh.startsWith('https') == true}">
@@ -38,19 +45,5 @@
         </div>
     </c:forEach>
 </div>
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-md-4 col-sm-6 grid-margin stretch-card">
-                <nav>
-                    <ul class="pagination d-flex justify-content-center flex-wrap pagination-flat pagination-success" style="margin: auto;">
-                        <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
-                            <li class="page-item"><a class="page-link" href="<c:url value="/pageEvent" />?page=${page}">${page}</a></li>
-                            </c:forEach>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
+
 <hr>

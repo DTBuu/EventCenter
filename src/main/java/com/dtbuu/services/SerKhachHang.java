@@ -19,6 +19,10 @@ public interface SerKhachHang {
     boolean addKhachHang_with_Login(KhachHang newCustome);
 
     List<KhachHang> getKhachHangs(String keyword, int page);
+    
+    List<KhachHang> findKhachHangByLoginID(String login_id);
+
+    KhachHang getKhachHangByLoginID(int Login);
 
     long countKhachHangs();
 }

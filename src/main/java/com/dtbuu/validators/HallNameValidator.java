@@ -28,7 +28,7 @@ public class HallNameValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         Diadiemtochuc d = (Diadiemtochuc) o;      
-        if (!d.getDDTC_ten().contains("PHI")) {
+        if (!d.getDDTC_ten().contains("Sanh")) {
             errors.rejectValue("DDTC_ten", "diadiemtochuc.DDTC_ten.tenErr");
         }
     }

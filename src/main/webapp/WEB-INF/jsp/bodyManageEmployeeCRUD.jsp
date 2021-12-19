@@ -20,20 +20,16 @@
 
 <c:url value="/crudEmployee" var="action"/>
 <form:form method="post" action="${action}" modelAttribute="crudEmployee">
-    <!--    form:errors path="DDTC_ten" cssClass="text-danger" element="div"/>-->
     <div class="form-group row">
         <div class="col-md-3">
-            <label class="col-form-label" for="NhanVien_id"> ID dsfasd
-                
+            <label class="col-form-label" for="NhanVien_id">
             </label>
         </div>
         <div class="col-md-9">
-            form:input type="text" id="NhanVien_id" path="NhanVien_id" class="form-control text-box single-line"/>
         </div>
     </div>
     <br>
-    
-    <!--    form:errors path="DDTC_ten" cssClass="text-danger" element="div"/>-->
+
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for="Ho"> 
@@ -116,16 +112,15 @@
                         <option selected="" value="${cat.login_id}" >${cat.login_loai}</option>
                     </c:if>
                     <c:if test="${cat.login_id != crudEmployee.login.login_id}">
-                    <option value="${cat.login_id}" >${cat.login_loai}</option>
+                        <option value="${cat.login_id}" >${cat.login_loai}</option>
                     </c:if>
                 </c:forEach>
             </form:select>
         </div>
-
         <!--                form:errors path="Login" cssClass="text-danger" />-->
     </div>
     <br>
-    
+
     <div class="form-group row">
         <div class="col-md-3">
             <label for="cate">Position</label>
@@ -134,31 +129,26 @@
             <form:select id="cate" path="ViTri" cssClass="form-control">
                 <c:forEach items="${vitri}" var="cat">
                     <c:if test="${cat.viTri_id == crudEmployee.viTri.viTri_id}">
-                    <option selected value="${cat.viTri_id}" >${cat.viTri_ten}</option>
+                        <option selected value="${cat.viTri_id}" >${cat.viTri_ten}</option>
                     </c:if>
                     <c:if test="${cat.viTri_id != crudEmployee.viTri.viTri_id}">
-                    <option value="${cat.viTri_id}" >${cat.viTri_ten}</option>
+                        <option value="${cat.viTri_id}" >${cat.viTri_ten}</option>
                     </c:if>
                 </c:forEach>
             </form:select>
             <!--                    form:errors path="Login" cssClass="text-danger" />-->
         </div>
     </div>
+    <div class="form-group">
+        <form:hidden path="NhanVien_id" />
+        <c:if test="${crudEmployee.nhanVien_id> 0}">
+            <input type="submit" class="btn btn-warning" 
+                   value="<spring:message code="nhanvien.update" />" />
+        </c:if>
+        <c:if test="${crudEmployee.nhanVien_id<= 0}">
+            <input type="submit" class="btn btn-success" 
+                   value="<spring:message code="nhanvien.save" />" />
+        </c:if>
 
-<!--    <div class="form-group">
-        <input type="submit" value="Confirm" class="btn btn-primary"/>
-    </div>-->
-
-            <div class="form-group">
-                <form:hidden path="NhanVien_id" />
-                <c:if test="${crudEmployee.nhanVien_id> 0}">
-                    <input type="submit" class="btn btn-warning" 
-                           value="<spring:message code="nhanvien.update" />" />
-                </c:if>
-                <c:if test="${crudEmployee.nhanVien_id<= 0}">
-                    <input type="submit" class="btn btn-success" 
-                           value="<spring:message code="nhanvien.save" />" />
-                </c:if>
-        
-            </div>
+    </div>
 </form:form>

@@ -19,5 +19,10 @@ public interface RepoKhachHang {
 
     List<KhachHang> getKhachHangs(String keyword, int page);
 
+    List<KhachHang> findKhachHangByLoginID(String login_id);
+
+    KhachHang getKhachHangByLoginID(int login_id);
+
     long countKhachHangs();
+    
 }

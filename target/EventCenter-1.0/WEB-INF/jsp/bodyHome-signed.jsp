@@ -12,6 +12,6 @@
         <div class="welcome">Welcome!</div>
     </div>
     <div class="slogan">
-        You are our resource
+        You are our resource ${currentUser.login_id}
     </div>
 </div>

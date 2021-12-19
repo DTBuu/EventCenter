@@ -5,9 +5,10 @@
  */
 package com.dtbuu.controllers;
 
+import com.dtbuu.pojos.KhachHang;
+import com.dtbuu.pojos.Logins;
 import com.dtbuu.pojos.Sukien;
 import com.dtbuu.pojos.Thanhtoan;
-import com.dtbuu.repositories.RepoBooking;
 import com.dtbuu.services.*;
 
 import java.text.ParseException;
@@ -16,7 +17,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,11 +45,17 @@ public class ControllerBookingEvent {
     private SerPhucVu serPhucVu;
 
     @Autowired
-    private SerPayment servicePayment;
+    private SerPayment serPayment;
 
     @Autowired
-    private SerBooking serviceBooking;
-
+    private SerBooking serBooking;
+    
+    @Autowired 
+            private SerKhachHang serKhachHang;
+    
+    @Autowired 
+            private SerLogins serLogins;
+    
     @ModelAttribute
     public void commonAttr(Model modelcate, HttpSession session) {
         modelcate.addAttribute("sanh", this.serSanhTiec.getSanhTiecs());
@@ -67,7 +73,7 @@ public class ControllerBookingEvent {
             model.addAttribute("bookingEvent", new Sukien());
         }
 
-        model.addAttribute("valueController", "aaa");
+        model.addAttribute("testController", "aaa");
         return "bookingEvent";
     }
 
@@ -77,6 +83,8 @@ public class ControllerBookingEvent {
             @RequestParam(name = "suKienloai") String loaiSukien,
             @RequestParam(name = "ngayBatDau") String dateStart,
             @RequestParam(name = "ngayKetThuc") String dateEnd,
+            @RequestParam(name = "khachHangid") String khachHangid,
+            
             @RequestParam(name = "ddtcId") String ddtcId,
             @RequestParam(name = "menuid") String menuid,
             @RequestParam(name = "chuTriid") String chuTriid,
@@ -90,6 +98,8 @@ public class ControllerBookingEvent {
         sukien.setMenuid(serMenu.getMenuByID(Integer.valueOf(menuid)));
         sukien.setSuKienten(tenSukien);
         sukien.setSuKienloai(loaiSukien);
+                // set id khach hang dat tiec
+        sukien.setKhachHangid(serKhachHang.getKhachHangByLoginID(Integer.valueOf(khachHangid)));
         try {
             sukien.setNgayBatDau(simpleDateFormat.parse(dateStart));
             sukien.setNgayKetThuc(simpleDateFormat.parse(dateEnd));
@@ -109,7 +119,7 @@ public class ControllerBookingEvent {
 
     @GetMapping("/payment/id/{id}")
     public ModelAndView detailView(@PathVariable(name = "id") Integer suKienId, HttpServletRequest request) {
-        Sukien sukien = serviceBooking.findById(suKienId);
+        Sukien sukien = serBooking.findById(suKienId);
         System.out.println(sukien.getdDTCid());
         System.out.println(sukien.getSuKienid() + " " + sukien.getSuKienten());
         ModelAndView modelAndView = new ModelAndView("payment");
@@ -120,13 +130,13 @@ public class ControllerBookingEvent {
     @PostMapping("/payment/id/{id}")
     public String payment(@PathVariable(name = "id") Integer suKienId) {
         System.out.println("OK");
-        Sukien sukien = serviceBooking.findById(suKienId);
+        Sukien sukien = serBooking.findById(suKienId);
         Thanhtoan thanhtoan = new Thanhtoan();
         thanhtoan.setNgayThanhToan(new Date());
         thanhtoan.setPhuongThuc("tien mat");
         thanhtoan.setSuKienid(sukien);
         thanhtoan.setSoTien(sukien.getTotalFee());
-        servicePayment.save(thanhtoan);
+        serPayment.save(thanhtoan);
         return "redirect:/HomeManager";
     }
 

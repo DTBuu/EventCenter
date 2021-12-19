@@ -27,7 +27,7 @@
 </div>
 <ul class="pagination" style="margin: auto;">
     <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="page">
-        <li class="page-item"><a class="page-link" href="<c:url value="/manageHall" />?page=${page}">${page}</a></li>
+        <li class="page-item"><a class="page-link" href="<c:url value="/admin/manageHall" />?page=${page}">${page}</a></li>
         </c:forEach>
 </ul>
 <table class="table" id="table-hall">

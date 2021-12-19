@@ -22,8 +22,12 @@ public interface RepoMenu {
     List<Menu> getMenus();
 
     Menu getMenuByID(int menuid);
+    
+    ItemsInMenus getItemsInMenusByID(int menuid);
 
     List<ItemsInMenus> getItemsInMenus(String keyword);
 
     boolean save(ItemsInMenus itemsInMenus);
+    
+    boolean saveMenu(Menu menuid);
 }

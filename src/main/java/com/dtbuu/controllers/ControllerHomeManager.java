@@ -8,12 +8,14 @@ package com.dtbuu.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Buu Duong Tan
  */
 @Controller
+//@RequestMapping("/signed")
 public class ControllerHomeManager {
 
     @GetMapping("/HomeManager")
@@ -22,12 +24,12 @@ public class ControllerHomeManager {
         return "pageHomeManager";
     }
 
-    @GetMapping("/tab")
+    @RequestMapping("/admin/tab")
     public String pageManagement() {
         return "pageManagement";
     }
 
-    @GetMapping("/Dashboard")
+    @GetMapping("/admin/Dashboard")
     public String pageDashboard(Model m) {
 
         return "pageDashboard";

@@ -7,22 +7,19 @@ package com.dtbuu.controllers;
 
 import com.dtbuu.pojos.Diadiemtochuc;
 import com.dtbuu.pojos.ItemsInMenus;
+import com.dtbuu.pojos.Menu;
+import com.dtbuu.services.SerItem;
 import com.dtbuu.services.SerMenu;
 import com.dtbuu.services.SerSanhTiec;
-import com.dtbuu.validators.HallNameValidator;
 import com.dtbuu.validators.WebAppValidator;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -30,21 +27,22 @@ import org.springframework.web.bind.support.SessionStatus;
  *
  * @author DiepHoangPhi
  */
-
 @Controller
 public class ControllerHallCRUD {
+
     @Autowired
     private SerSanhTiec serSanhTiec;
     @Autowired
     private SerMenu serMenu;
     @Autowired
-    private WebAppValidator diadiemtochucValidator;
-    
+    private SerItem serItem;
+
+//    @Autowired
+//    private WebAppValidator diadiemtochucValidator;
 //    @InitBinder
 //    public void initBinder(WebDataBinder binder) {
 //        binder.setValidator(diadiemtochucValidator);
 //    } 
-
     @GetMapping("/crudHall")
     public String addOrUpdateView(Model model,
             @RequestParam(name = "DDTC_id", defaultValue = "0") int DDTC_id) {
@@ -56,7 +54,6 @@ public class ControllerHallCRUD {
         }
         return "crudHall";
     }
-    
 
     @PostMapping("/crudHall")
     public String addOrUpdate(Model model, @ModelAttribute(value = "crudHall") @Valid Diadiemtochuc diadiemtochuc, BindingResult result, SessionStatus sessionStatus) {
@@ -70,30 +67,43 @@ public class ControllerHallCRUD {
         sessionStatus.setComplete();
         return "redirect:/manageHall";
     }
-    
+
     @GetMapping("/crudMenu")
-    public String addOrUpdateViewMenu(Model model, @RequestParam(name = "itemsInMenusPK", defaultValue = "0") int itemsInMenusPK) {
+    public String addOrUpdateViewMenu(Model model,
+            @RequestParam(name = "menuid", defaultValue = "0") int menuid) {
         // thêm
-        if (itemsInMenusPK>0) {
-            model.addAttribute("crudMenu", this.serMenu.getMenuByID(itemsInMenusPK));
+//       model.addAttribute("check", menuid);
+        model.addAttribute("cate", this.serMenu.getMenus(""));
+
+        if (menuid == 0) {
+
+        } else {
+            model.addAttribute("crudMenu", this.serMenu.getMenuByID(menuid));
+            model.addAttribute("cate", this.serMenu.getMenus(""));
+            model.addAttribute("cate1", this.serItem.getItemses(""));
         }
         model.addAttribute("crudMenu", new ItemsInMenus());
         return "crudMenu";
     }
-    
+
     @PostMapping("/crudMenu")
-    public String addOrUpdate(Model model, @ModelAttribute(value = "crudMenu") @Valid 
-            ItemsInMenus iim,
+    public String addOrUpdate(Model model, @ModelAttribute(value = "crudMenu") @Valid ItemsInMenus iim,
             BindingResult result, SessionStatus sessionStatus) {
-        if (result.hasErrors()) {
-            return "crudMenu";
+        try {
+            if (result.hasErrors()) {
+                return "crudMenu";
+            }
+            if (!this.serMenu.save(iim)) {
+                model.addAttribute("errMsg", "Has something wrong. Please try again later");
+                return "crudMenu";
+            }
+        } catch (Exception ex) {
+            System.err.println("=== PLEASE CHECK AGAIN INFOMATION ===" + ex.getMessage());
+            ex.printStackTrace();
         }
-        if (!this.serMenu.save(iim)) {
-            model.addAttribute("errMsg", "Has something wrong. Please try again later");
-            return "crudMenu";
-        }
+
         sessionStatus.setComplete();
         return "redirect:/manageMenu";
     }
-    
+
 }

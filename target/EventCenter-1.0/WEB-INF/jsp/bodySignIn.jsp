@@ -8,7 +8,11 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
+<core:if test="${param.accessDenied != null}">
+    <div class="alert alert-danger">
+        You don't have permission to access this site!!!
+    </div>
+</core:if>
 
 <div class="bodySignIn">
     <form method="POST" action="<core:url value="/sign-in"/>" class="form-sign-in">

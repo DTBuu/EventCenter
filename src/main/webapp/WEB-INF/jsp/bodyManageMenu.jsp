@@ -27,15 +27,16 @@
         </tr>
     </thead>
     <c:forEach items="${m}" var="ten"  >
-    <tbody>
-        <tbody class="labels">
+        <tbody>
+        <tbody class="labels" style="background-color:#cccccc;">
             <tr>
                 <td colspan="6">
                     <label for="ten">${ten.menuten}</label>
-                    <input type="checkbox" name="ten" id="ten${ten.menuid}"  data-toggle="toggle">
-                    <a type="button"  class="editbtn" href="<c:url value="/crudMenu/?itemsInMenusPK=${ten.menuid}" />" role="button"></a>
-                    <a type="button" href="javascript:;" class="deletebtn" onclick="#">
-                    </a>
+                    <div class="float-right">
+                        <a type="button"  class="editbtn" href="<c:url value="/crudMenu/?menuid=${ten.menuid}" />" role="button"></a>
+                        <a type="button" href="javascript:;" class="deletebtn" onclick="#">
+                        </a>
+                    </div>
                 </td>
             </tr>
         </tbody>

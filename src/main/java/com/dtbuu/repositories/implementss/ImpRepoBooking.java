@@ -5,19 +5,20 @@
  */
 package com.dtbuu.repositories.implementss;
 
-import com.dtbuu.pojos.Cart;
+import com.dtbuu.pojos.KhachHang;
+import com.dtbuu.pojos.Logins;
 import com.dtbuu.pojos.Sukien;
 import com.dtbuu.repositories.RepoBooking;
+import com.dtbuu.repositories.RepoLogins;
 import com.dtbuu.repositories.RepoSuKien;
+import com.dtbuu.services.SerLogins;
 
 import java.util.List;
-import java.util.Map;
-import org.hibernate.HibernateException;
+import static jdk.internal.org.jline.utils.Colors.s;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,11 +34,19 @@ public class ImpRepoBooking implements RepoBooking{
     private LocalSessionFactoryBean sessionFactory;
     @Autowired
     private RepoSuKien repoSuKien;
+    @Autowired
+    private SerLogins serLogins;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean addSuKien(Sukien event) {
         Session session = sessionFactory.getObject().getCurrentSession();
+        // set id khach hang dat tiec
+//        KhachHang khachHang = new KhachHang();
+//        Logins ua = this.serLogins.getLoginsAuth();
+//        khachHang =  session.get(KhachHang.class, ua.getLogin_id());
+//        System.out.println(khachHang);
+//        event.setKhachHangid(khachHang);
         Sukien sukien = (Sukien) session.save(event);
         return sukien == null? false : true;
     }

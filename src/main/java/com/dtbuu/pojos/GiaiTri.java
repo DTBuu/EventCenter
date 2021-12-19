@@ -8,8 +8,12 @@ package com.dtbuu.pojos;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -20,15 +24,18 @@ import javax.persistence.Table;
 public class GiaiTri implements Serializable {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int GiaiTri_id;
     
 //    @Column(nullable=false, length=100)
 //    private String GiaiTri_loai;
     
     @Column(nullable=false, length=100)
+    @Size(max = 100, min = 5, message = "{GiaiTri.GiaiTri_ten.lenErr}")
     private String GiaiTri_ten;
     
     @Column(nullable=false)
+    @Max(value = 10000000, message = "{GiaiTri.GiaiTri_gia.priceErr}")
     private float GiaiTri_gia;
     
     @Column(length=100)

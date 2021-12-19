@@ -23,27 +23,44 @@
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for="ChuTri_ten"> 
-                <spring:message code="diadiemtochuc.DDTC_ten" /> Name
+                Name
             </label>
         </div>
         <div class="col-md-5">
             <form:input type="text" id="ChuTri_ten" path="ChuTri_ten" class="form-control text-box single-line"/>
+            <form:errors path="ChuTri_ten" cssClass="text-danger" element="div"/>
         </div>
     </div><br>
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for="ChuTri_gia">
-                <spring:message code="diadiemtochuc.DDTC_SoBanMax" /> Price
+                Price
             </label>
         </div>
         <div class="col-md-5">
-            <form:input type="text" id="ChuTri_gia" path="ChuTri_gia" cssClass="form-control"/>
+            <form:input type="number" id="ChuTri_gia" path="ChuTri_gia" cssClass="form-control"/>
+<!--            <script>
+                var formatter = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                });
+
+                document.querySelector('#ChuTri_gia').addEventListener('change', (e) => {
+                    if (isNaN(e.target.value)) {
+                        e.target.value = ''
+                    } else {
+                        e.target.value = formatter.format(e.target.value);
+                    }
+                })
+            </script>-->
+            <form:errors path="ChuTri_gia" cssClass="text-danger" element="div"/>
         </div>
     </div><br>
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for= "GhiChu">
-                <spring:message code="diadiemtochuc.DDTC_GhiChu" />
+                <!--                spring:message code="diadiemtochuc.DDTC_GhiChu" />-->
+                Note
             </label>
         </div>
         <div class="col-md-5">

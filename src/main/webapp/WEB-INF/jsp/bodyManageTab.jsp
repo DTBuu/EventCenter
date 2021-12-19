@@ -22,17 +22,15 @@
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Human Resource</a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="<core:url value="/manageEmployee"/>">Staff</a></li>
-                <li><a class="dropdown-item" href="#">Login</a></li>
-                <li><a class="dropdown-item" href="#">Position</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Services</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="manageHost">Host</a></li>
-                <li><a class="dropdown-item" href="manageEnt">Entertainment</a></li>
-                <li><a class="dropdown-item" href="manageDecor">Decoration</a></li>
-                <li><a class="dropdown-item" href="manageServe">Extra Services</a></li>
+                <li><a class="dropdown-item" href="<core:url value="/manageHost"/>">Host</a></li>
+                <li><a class="dropdown-item" href="<core:url value="/manageEnt"/>">Entertainment</a></li>
+                <li><a class="dropdown-item" href="<core:url value="/manageDecor"/>">Decoration</a></li>
+                <li><a class="dropdown-item" href="<core:url value="/manageServe"/>">Extra Services</a></li>
             </ul>
         </li>
         <li class="nav-item ">

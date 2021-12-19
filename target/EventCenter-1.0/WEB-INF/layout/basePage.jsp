@@ -30,9 +30,10 @@
 <body style="text-align: center;">
     <!--__________HEAD__________-->
     <tiles:insertAttribute name="head"/>
-
-    <!--__________BODY__________-->
-    <tiles:insertAttribute name="body"/>
+    
+    
+        <!--__________BODY__________-->
+        <tiles:insertAttribute name="body"/>
 
     <!--__________FOOT__________-->
     <%--<tiles:insertAttribute name="foot"/>--%>

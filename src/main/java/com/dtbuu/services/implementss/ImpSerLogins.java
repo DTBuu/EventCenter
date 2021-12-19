@@ -7,6 +7,7 @@ package com.dtbuu.services.implementss;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.dtbuu.pojos.KhachHang;
 import com.dtbuu.pojos.Logins;
 import com.dtbuu.repositories.RepoLogins;
 import com.dtbuu.services.SerLogins;
@@ -72,5 +73,10 @@ public class ImpSerLogins implements SerLogins {
         GranAuths.add(new SimpleGrantedAuthority(lg.getLogin_loai()));
 
         return new org.springframework.security.core.userdetails.User(lg.getLogin_user(), lg.getLogin_pass(), GranAuths);
+    }
+
+    @Override
+    public Logins getLoginsAuth() {
+        return this.repoLogins.getLoginsAuth();
     }
 }

@@ -7,11 +7,14 @@ package com.dtbuu.pojos;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,9 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "Logins")
 public class Logins implements Serializable {
 
-    public static final String MANAGER = "manager";
-    public static final String STAFF = "staff";
-    public static final String GUEST = "guest";
+    public static final String MANAGER = "ROLE_MANAGER";
+    public static final String STAFF = "ROLE_STAFF";
+    public static final String GUEST = "ROLE_GUEST";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +49,7 @@ public class Logins implements Serializable {
 
     @Column
     private String Login_avatar;
-
+    
     @Transient
     private MultipartFile file;
 
@@ -219,5 +222,6 @@ public class Logins implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-
+    
+    
 }

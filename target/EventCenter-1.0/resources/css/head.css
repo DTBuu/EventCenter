@@ -56,10 +56,9 @@ and open the template in the editor.
 }
 .nav-item-user-box
 {
-    position: absolute;
+/*    position: absolute;*/
     top: 0;
     right: 2vw;
-    
     text-decoration: none;
     color: black;
     border: 2px solid black;

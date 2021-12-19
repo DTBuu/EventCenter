@@ -29,23 +29,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class ImpRepoMenu implements RepoMenu {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    
+
     @Override
     public List<Menu> getMenus(String keyword) {
-        Session s=sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder=s.getCriteriaBuilder();
-        CriteriaQuery<Menu> query =builder.createQuery(Menu.class);
-        Root root=query.from(Menu.class);
-        query=query.select(root);
-        
-        if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("menuten").as(String.class)
-                    ,String.format("%%%s%%", keyword));
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Menu> query = builder.createQuery(Menu.class);
+        Root root = query.from(Menu.class);
+        query = query.select(root);
+
+        if (!keyword.isEmpty() && keyword != null) {
+            Predicate p = builder.like(root.get("menuten").as(String.class),
+                     String.format("%%%s%%", keyword));
         }
-        
-        Query q=s.createQuery(query);
+
+        Query q = s.createQuery(query);
         return q.getResultList();
     }
 
@@ -56,18 +57,18 @@ public class ImpRepoMenu implements RepoMenu {
 
     @Override
     public List<ItemsInMenus> getItemsInMenus(String keyword) {
-        Session s=sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder=s.getCriteriaBuilder();
-        CriteriaQuery<ItemsInMenus> query =builder.createQuery(ItemsInMenus.class);
-        Root root=query.from(ItemsInMenus.class);
-        query=query.select(root);
-        
-        if (!keyword.isEmpty() && keyword!=null) {
-            Predicate p=builder.like(root.get("itemsInMenusPK").as(String.class)
-                    ,String.format("%%%s%%", keyword));
-        } 
-        
-        Query q=s.createQuery(query);
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<ItemsInMenus> query = builder.createQuery(ItemsInMenus.class);
+        Root root = query.from(ItemsInMenus.class);
+        query = query.select(root);
+
+        if (!keyword.isEmpty() && keyword != null) {
+            Predicate p = builder.like(root.get("itemsInMenusPK").as(String.class),
+                     String.format("%%%s%%", keyword));
+        }
+
+        Query q = s.createQuery(query);
         return q.getResultList();
     }
 
@@ -80,12 +81,11 @@ public class ImpRepoMenu implements RepoMenu {
 //        i.setSoLuong(soLuong);
 //        return s.save(i);
 //    }
-
     @Override
     public boolean save(ItemsInMenus iim) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
-            if (iim.getItemsInMenusPK()==null) {
+            if (iim.getItemsInMenusPK() == null) {
                 s.update(iim);
             } else {
                 s.save(iim);
@@ -102,8 +102,29 @@ public class ImpRepoMenu implements RepoMenu {
     public List<Menu> getMenus() {
         Session s = sessionFactory.getObject().getCurrentSession();
         Query q = s.createQuery("FROM Menu");
-        
+
         return q.getResultList();
     }
-    
+
+    @Override
+    public boolean saveMenu(Menu menuid) {
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            if (menuid.getMenuid()!=null) {
+                
+            } else {
+                s.save(menuid);
+            }
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public ItemsInMenus getItemsInMenusByID(int menuid) {
+        return this.sessionFactory.getObject().getCurrentSession().get(ItemsInMenus.class, menuid);
+    }
+
 }

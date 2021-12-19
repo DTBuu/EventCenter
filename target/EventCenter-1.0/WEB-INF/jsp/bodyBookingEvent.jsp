@@ -10,6 +10,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:url value="/bookingEvent" var="action"/>
+
+${currentUser.login_id} 
 <form:form method="post" action="${action}" modelAttribute="bookingEvent">
     <div id="booking" class="section">
         <div class="section-center">
@@ -18,6 +20,7 @@
                     <div class="booking-form">
                         <div class="form-header">
                             <h1>Booking Information</h1>
+                            <form:input class="form-control" type="hidden" id="khachHangid" path="khachHangid" required="required"  placeholder="Customer name" value="${currentUser.login_id}"/>
                         </div>
                         <div>
 
@@ -25,7 +28,18 @@
                             <div class="form-group"> <form:input class="form-control" type="text" id="suKienloai" path="suKienloai" required="required"  placeholder="Event type (Birthday, Wedding, Ceremony,...)"/> <span class="form-label">Type</span> </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group"> <form:input class="form-control" type="date" id="ngayBatDau" path="ngayBatDau" required="required" /> <span class="form-label">Start date</span> </div>
+                                    <div class="form-group"> <form:input class="form-control" onchange="checkDate()" type="date" id="ngayBatDau" path="ngayBatDau" required="required" /> 
+                                        <script>
+                                            function checkDate() {
+                                                var selectedText = document.getElementById('ngayBatDau').value;
+                                                var selectedDate = new Date(selectedText);
+                                                var now = new Date();
+                                                if (selectedDate < now) {
+                                                    alert("Date must be in the future");
+                                                }
+                                            }
+                                        </script>
+                                        <span class="form-label">Start date</span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group"> <form:input class="form-control" type="date" id="ngayKetThuc" path="ngayKetThuc" required="required"/> <span class="form-label">End date</span> </div>

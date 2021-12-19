@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -25,12 +27,15 @@ public class ChuTri implements Serializable {
     @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chutri_generator"  )
 //    @SequenceGenerator(name = "chutri_generator", )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ChuTri_id;
     
     @Column(nullable=false, length=100)
+    @Size(max = 100, min = 5, message = "{ChuTri.ChuTri_ten.lenErr}")
     private String ChuTri_ten;
     
     @Column(nullable=false)
+    @Max(value = 10000000, message = "{ChuTri.ChuTri_gia.priceErr}")
     private float ChuTri_gia;
     
     @Column(length=100)

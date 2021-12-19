@@ -23,27 +23,29 @@
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for="GiaiTri_ten"> 
-                <spring:message code="diadiemtochuc.DDTC_ten" /> Name
+                Name
             </label>
         </div>
         <div class="col-md-5">
             <form:input type="text" id="GiaiTri_ten" path="GiaiTri_ten" class="form-control text-box single-line"/>
+            <form:errors path="GiaiTri_ten" cssClass="text-danger" element="div"/>
         </div>
     </div><br>
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for="GiaiTri_gia">
-                <spring:message code="diadiemtochuc.DDTC_GiaMotBan" /> Price
+                Price
             </label>
         </div>
         <div class="col-md-5">
-            <form:input type="text" id="GiaiTri_gia" path="GiaiTri_gia" cssClass="form-control"/>
+            <form:input type="number" id="GiaiTri_gia" path="GiaiTri_gia" cssClass="form-control"/>
+            <form:errors path="GiaiTri_gia" cssClass="text-danger" element="div"/>
         </div>
     </div><br>
     <div class="form-group row">
         <div class="col-md-3">
             <label class="col-form-label" for= "GhiChu">
-                <spring:message code="diadiemtochuc.DDTC_GhiChu" />
+                Note
             </label>
         </div>
         <div class="col-md-5">
@@ -60,6 +62,5 @@
             <input type="submit" class="btn btn-success" 
                    value="<spring:message code="diadiemtochuc.save" />" />
         </c:if>
-
     </div>
 </form:form>
